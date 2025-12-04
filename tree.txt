@@ -1,0 +1,569 @@
+.
+├── README.md
+├── TODO.md
+├── api_backup
+├── flaseImages
+│   ├── Image for website.jpg
+│   ├── WhatsApp Image 2025-09-18 at 12.46.15.jpeg
+│   ├── WhatsApp Image 2025-09-18 at 12.46.16 (1).jpeg
+│   ├── WhatsApp Image 2025-09-18 at 12.46.16 (2).jpeg
+│   ├── WhatsApp Image 2025-09-18 at 12.46.21.jpeg
+│   ├── WhatsApp Image 2025-09-18 at 12.46.22 (1).jpeg
+│   ├── WhatsApp Image 2025-09-18 at 12.46.22 (3).jpeg
+│   ├── WhatsApp Image 2025-09-18 at 12.46.23 (1).jpeg
+│   ├── WhatsApp Image 2025-09-18 at 12.46.23.jpeg
+│   ├── WhatsApp Image 2025-09-18 at 12.46.24 (1).jpeg
+│   ├── WhatsApp Image 2025-09-18 at 12.46.24.jpeg
+│   ├── WhatsApp Image 2025-09-18 at 12.46.25.jpeg
+│   ├── WhatsApp Image 2025-09-18 at 12.46.26 (1).jpeg
+│   ├── WhatsApp Image 2025-09-18 at 12.46.27.jpeg
+│   ├── WhatsApp Image 2025-09-18 at 12.46.28 (1).jpeg
+│   ├── WhatsApp Image 2025-10-10 at 10.56.10.jpeg
+│   ├── WhatsApp Image 2025-10-10 at 11.17.46.jpeg
+│   ├── WhatsApp Video 2025-09-18 at 13.10.15.mp4
+│   ├── bg2.jpeg
+│   ├── bgim.png
+│   ├── logo.png
+│   ├── slide1.jpg
+│   ├── slide2.jpg
+│   ├── slide3.jpg
+│   ├── team1.jpg
+│   └── video3.mp4
+├── jsconfig.json
+├── laibu.md
+├── lib
+│   └── mongoose.js
+├── models
+│   ├── Cart.js
+│   ├── Contact.js
+│   ├── Order.js
+│   └── Product.js
+├── next.config.js
+├── out
+│   ├── 276624_small.mp4
+│   ├── 292827_small-2.mp4
+│   ├── 404
+│   │   └── index.html
+│   ├── 404.html
+│   ├── Certifacte.jpeg
+│   ├── FSSAI_Logo.png
+│   ├── Managing-Director
+│   │   ├── index.html
+│   │   └── index.txt
+│   ├── Soyabean-blog.jpg
+│   ├── Veer Bharat Post (1).png
+│   ├── _next
+│   │   ├── UEExl1OcK2kSdLChhxt8G
+│   │   └── static
+│   │       ├── UEExl1OcK2kSdLChhxt8G
+│   │       │   ├── _buildManifest.js
+│   │       │   └── _ssgManifest.js
+│   │       ├── chunks
+│   │       │   ├── 184-67c29c440e6dd1bc.js
+│   │       │   ├── 2689e558-79c4a190e11549ee.js
+│   │       │   ├── 49-7e34b034b0d772b3.js
+│   │       │   ├── 750-cc0992e4ead3c0dd.js
+│   │       │   ├── 812-640c2d0a9a1ff285.js
+│   │       │   ├── 842-36ed8d7fc0358885.js
+│   │       │   ├── 85-58de00d9f81250c4.js
+│   │       │   ├── 94c12b52-93e5ac61836e9aa6.js
+│   │       │   ├── app
+│   │       │   │   ├── Managing-Director
+│   │       │   │   │   └── page-79ec416111cf1c9a.js
+│   │       │   │   ├── _not-found
+│   │       │   │   │   └── page-f3331dbf96ec6888.js
+│   │       │   │   ├── about
+│   │       │   │   │   └── page-ce5f8ef5928582a6.js
+│   │       │   │   ├── blog
+│   │       │   │   │   ├── [id]
+│   │       │   │   │   │   └── page-b20066240e285666.js
+│   │       │   │   │   └── page-69cd372bf51662a1.js
+│   │       │   │   ├── brand-rice
+│   │       │   │   │   └── page-3f189e32f6f3a52c.js
+│   │       │   │   ├── brochure
+│   │       │   │   │   └── page-88ac3d1228bace3a.js
+│   │       │   │   ├── cart
+│   │       │   │   │   └── page-3ad9a6370e9c3ff9.js
+│   │       │   │   ├── certificate
+│   │       │   │   │   └── page-60fd5ba76ad8aa7e.js
+│   │       │   │   ├── contact
+│   │       │   │   │   └── page-c525b00bc8a39ed8.js
+│   │       │   │   ├── gallery
+│   │       │   │   │   └── page-6bc3db0a1b6d9d92.js
+│   │       │   │   ├── layout-2e6db5bcd2a73b6c.js
+│   │       │   │   ├── mustard-oil
+│   │       │   │   │   └── page-3c51432463c0aefa.js
+│   │       │   │   ├── order
+│   │       │   │   │   └── success
+│   │       │   │   │       └── page-ac87b94473074c13.js
+│   │       │   │   ├── page-495749f9e91666cc.js
+│   │       │   │   ├── palm-oil
+│   │       │   │   │   └── page-ff5011d8f326670e.js
+│   │       │   │   ├── products
+│   │       │   │   │   └── page-2f04bba7e0b6b08b.js
+│   │       │   │   ├── soyabean-oil
+│   │       │   │   │   └── page-823f853967c9234a.js
+│   │       │   │   ├── sunflower-Oil
+│   │       │   │   │   └── page-1418f4c14201da8b.js
+│   │       │   │   └── team
+│   │       │   │       └── page-45fe1fabc5c3883a.js
+│   │       │   ├── ca9a4ea3-e55e5b68595e4ca2.js
+│   │       │   ├── framework-6e06c675866dc992.js
+│   │       │   ├── main-87430c06b1bd3f71.js
+│   │       │   ├── main-app-9dbdf7f05f6957a7.js
+│   │       │   ├── pages
+│   │       │   │   ├── _app-99c0d13304396e92.js
+│   │       │   │   └── _error-b22341a88093580b.js
+│   │       │   ├── polyfills-78c92fac7aa8fdd8.js
+│   │       │   └── webpack-a480749bcb956ca7.js
+│   │       ├── css
+│   │       │   ├── 4df78f2cd73d6b26.css
+│   │       │   ├── b28765212c487a8b.css
+│   │       │   └── fb82568f907370b2.css
+│   │       └── media
+│   │           ├── 034d78ad42e9620c-s.woff2
+│   │           ├── 0484562807a97172-s.p.woff2
+│   │           ├── 28485c0de2075f40-s.woff2
+│   │           ├── 28a2004cf8372660-s.woff2
+│   │           ├── 29e7bbdce9332268-s.woff2
+│   │           ├── 47f136985ef5b5cb-s.woff2
+│   │           ├── 4ead58c4dcc3f285-s.woff2
+│   │           ├── 5fb25f343c7550ca-s.woff2
+│   │           ├── 7db6c35d839a711c-s.p.woff2
+│   │           ├── ajax-loader.0b80f665.gif
+│   │           ├── c3bc380753a8436c-s.woff2
+│   │           ├── eaead17c7dbfcd5d-s.p.woff2
+│   │           ├── eafabf029ad39a43-s.p.woff2
+│   │           ├── fe0777f1195381cb-s.woff2
+│   │           ├── slick.25572f22.eot
+│   │           ├── slick.653a4cbb.woff
+│   │           ├── slick.6aa1ee46.ttf
+│   │           └── slick.f895cfdf.svg
+│   ├── about
+│   │   ├── index.html
+│   │   └── index.txt
+│   ├── banner1.jpg
+│   ├── banner2.jpg
+│   ├── banner3.jpg
+│   ├── banner4.jpg
+│   ├── blog
+│   │   ├── 1
+│   │   │   ├── index.html
+│   │   │   └── index.txt
+│   │   ├── 2
+│   │   │   ├── index.html
+│   │   │   └── index.txt
+│   │   ├── 3
+│   │   │   ├── index.html
+│   │   │   └── index.txt
+│   │   ├── 4
+│   │   │   ├── index.html
+│   │   │   └── index.txt
+│   │   ├── 5
+│   │   │   ├── index.html
+│   │   │   └── index.txt
+│   │   ├── 6
+│   │   │   ├── index.html
+│   │   │   └── index.txt
+│   │   ├── index.html
+│   │   └── index.txt
+│   ├── brand-rice
+│   │   ├── index.html
+│   │   └── index.txt
+│   ├── brochure
+│   │   ├── index.html
+│   │   └── index.txt
+│   ├── cart
+│   │   ├── index.html
+│   │   └── index.txt
+│   ├── certificate
+│   │   ├── index.html
+│   │   └── index.txt
+│   ├── contact
+│   │   ├── index.html
+│   │   └── index.txt
+│   ├── docs
+│   │   └── pdf
+│   │       └── brochure.pdf
+│   ├── event1.jpg
+│   ├── event2.jpg
+│   ├── gallery
+│   │   ├── index.html
+│   │   └── index.txt
+│   ├── google-site-verification.html
+│   ├── images
+│   │   ├── 1.png
+│   │   ├── 10.jpg
+│   │   ├── 11.jpg
+│   │   ├── 12.jpg
+│   │   ├── 13.jpg
+│   │   ├── 14.jpg
+│   │   ├── 15.jpg
+│   │   ├── 2.png
+│   │   ├── 3.png
+│   │   ├── 4.jpg
+│   │   ├── 4.png
+│   │   ├── 5.png
+│   │   ├── 66.jpg
+│   │   ├── 7.jpg
+│   │   ├── 8.jpg
+│   │   ├── 9.jpg
+│   │   ├── Brochure.png
+│   │   ├── Reduces1.jpeg
+│   │   ├── TahirBhai.jpeg
+│   │   ├── Unknown-1.jpeg
+│   │   ├── Unknown-2.jpeg
+│   │   ├── Unknown-3.jpeg
+│   │   ├── Unknown-4.jpeg
+│   │   ├── Unknown-5.jpeg
+│   │   ├── Unknown-6.jpeg
+│   │   ├── Unknown-7.jpeg
+│   │   ├── Unknown-8.jpeg
+│   │   ├── Unknown.jpeg
+│   │   ├── Veer Bharat Post (1).png
+│   │   ├── WhatsApp Image 2025-09-20 at 12.55.29.jpeg
+│   │   ├── WhatsApp Image 2025-09-22 at 14.00.59.jpeg
+│   │   ├── WhatsApp Image 2025-09-23 at 13.35.20-3.jpeg
+│   │   ├── WhatsApp Image 2025-09-23 at 13.35.21-2.jpeg
+│   │   ├── WhatsApp Image 2025-09-23 at 13.35.21-3.jpeg
+│   │   ├── WhatsApp Image 2025-09-23 at 13.35.21-4.jpeg
+│   │   ├── WhatsApp Image 2025-09-23 at 13.35.21-5.jpeg
+│   │   ├── WhatsApp Image 2025-09-23 at 13.35.21.jpeg
+│   │   ├── WhatsApp%20Image%202025-09-10%20at%2010.52.28-4.jpeg
+│   │   ├── WhatsApp-Image-2025-09-23-at-13.35.20-3-1.jpg
+│   │   ├── WhatsApp-Image-2025-09-23-at-13.35.21-2.jpg
+│   │   ├── WhatsApp-Image-2025-09-23-at-13.35.21-3.jpg
+│   │   ├── WhatsApp-Image-2025-09-23-at-13.35.21.jpg
+│   │   ├── WhatsApp-Image-2025-10-07-at-10.57.53.jpg
+│   │   ├── WhatsApp-Image-2025-10-11-at-11.53.02-2.jpg
+│   │   ├── WhatsApp-Image-2025-10-11-at-11.53.02.jpeg
+│   │   ├── banner2.jpg
+│   │   ├── banner3.jpg
+│   │   ├── banner4.jpg
+│   │   ├── bg1.jpg
+│   │   ├── bg11.jpg
+│   │   ├── bg2.jpeg
+│   │   ├── bg22.jpeg
+│   │   ├── bgim.png
+│   │   ├── blog-hero.jpg
+│   │   ├── cat4.jpeg
+│   │   ├── cat5.jpg
+│   │   ├── cat6.jpg
+│   │   ├── cat7.jpg
+│   │   ├── cu1.png
+│   │   ├── cu2.png
+│   │   ├── cu3.png
+│   │   ├── cu4.png
+│   │   ├── flavour.jpg
+│   │   ├── hero-video.mp4
+│   │   ├── home-collage.png
+│   │   ├── icon-1.jpeg
+│   │   ├── icon-2.jpeg
+│   │   ├── icon-3.jpeg
+│   │   ├── icon-4.jpeg
+│   │   ├── icon-5.jpeg
+│   │   ├── icon-6.jpeg
+│   │   ├── kachi-refined.jpg
+│   │   ├── mustard-15l.jpg
+│   │   ├── mustard-1l.jpg
+│   │   ├── mustard-200ml.jpg
+│   │   ├── mustard-500ml.jpg
+│   │   ├── mustard-5l-jar.jpg
+│   │   ├── mustard-blog.jpg
+│   │   ├── mustard.jpg
+│   │   ├── musterddd.jpg
+│   │   ├── palm-blog.jpg
+│   │   ├── prod-mustard.jpg
+│   │   ├── prod-ricebran.jpg
+│   │   ├── prod-soyabean.jpg
+│   │   ├── purity.jpg
+│   │   ├── purityy.jpg
+│   │   ├── quality.jpg
+│   │   ├── rice-bran-1.jpg
+│   │   ├── ricebran-blog.jpg
+│   │   ├── slide1.jpg
+│   │   ├── slide11.jpg
+│   │   ├── slide2.jpg
+│   │   ├── slide22.jpg
+│   │   ├── slide3.jpg
+│   │   ├── slide33.jpg
+│   │   ├── soyabean-15l.jpg
+│   │   ├── soyabean-1l.jpg
+│   │   ├── soyabean-500ml.jpg
+│   │   ├── soyabean-5l-jar.jpg
+│   │   ├── soyabean-blog.jpg
+│   │   ├── soyabeennnn.jpg
+│   │   ├── team2.jpg
+│   │   ├── veer-bharat-banner.jpg
+│   │   ├── veer-products.png
+│   │   ├── video1.mp4
+│   │   ├── video2.mp4
+│   │   └── video3.mp4
+│   ├── index.html
+│   ├── index.txt
+│   ├── logo.jpg
+│   ├── logo.png
+│   ├── mustard-5l-jar.jpg
+│   ├── mustard-oil
+│   │   ├── index.html
+│   │   └── index.txt
+│   ├── musterddd.jpg
+│   ├── order
+│   │   └── success
+│   │       ├── index.html
+│   │       └── index.txt
+│   ├── palm-oil
+│   │   ├── index.html
+│   │   └── index.txt
+│   ├── pro-ricebran.jpg
+│   ├── prod-soyabeen.jpg
+│   ├── product-mustard.jpg
+│   ├── product-ricebran.jpg
+│   ├── product-soyabean.jpg
+│   ├── product1.jpg
+│   ├── product1.mp4
+│   ├── product2.jpg
+│   ├── product2.mp4
+│   ├── product3.jpg
+│   ├── product3.mp4
+│   ├── product4.jpg
+│   ├── product5.jpg
+│   ├── products
+│   │   ├── index.html
+│   │   └── index.txt
+│   ├── slide2.jpg
+│   ├── slide3.jpg
+│   ├── soyabean-oil
+│   │   ├── index.html
+│   │   └── index.txt
+│   ├── sunflower-Oil
+│   │   ├── index.html
+│   │   └── index.txt
+│   ├── team
+│   │   ├── index.html
+│   │   └── index.txt
+│   └── veer-logo.png
+├── package-lock.json
+├── package.json
+├── pnpm-lock.yaml
+├── postcss.config.js
+├── prisma
+│   ├── dev.db
+│   ├── migrations
+│   │   ├── 20251027060117_init
+│   │   │   └── migration.sql
+│   │   └── migration_lock.toml
+│   ├── prisma.config.ts
+│   └── schema.prisma
+├── public
+│   ├── 276624_small.mp4
+│   ├── 292827_small-2.mp4
+│   ├── Certifacte.jpeg
+│   ├── FSSAI_Logo.png
+│   ├── Soyabean-blog.jpg
+│   ├── Veer Bharat Post (1).png
+│   ├── banner1.jpg
+│   ├── banner2.jpg
+│   ├── banner3.jpg
+│   ├── banner4.jpg
+│   ├── docs
+│   │   └── pdf
+│   │       └── brochure.pdf
+│   ├── event1.jpg
+│   ├── event2.jpg
+│   ├── google-site-verification.html
+│   ├── images
+│   │   ├── 1.png
+│   │   ├── 10.jpg
+│   │   ├── 11.jpg
+│   │   ├── 12.jpg
+│   │   ├── 13.jpg
+│   │   ├── 14.jpg
+│   │   ├── 15.jpg
+│   │   ├── 2.png
+│   │   ├── 3.png
+│   │   ├── 4.jpg
+│   │   ├── 4.png
+│   │   ├── 5.png
+│   │   ├── 66.jpg
+│   │   ├── 7.jpg
+│   │   ├── 8.jpg
+│   │   ├── 9.jpg
+│   │   ├── Brochure.png
+│   │   ├── Reduces1.jpeg
+│   │   ├── TahirBhai.jpeg
+│   │   ├── Unknown-1.jpeg
+│   │   ├── Unknown-2.jpeg
+│   │   ├── Unknown-3.jpeg
+│   │   ├── Unknown-4.jpeg
+│   │   ├── Unknown-5.jpeg
+│   │   ├── Unknown-6.jpeg
+│   │   ├── Unknown-7.jpeg
+│   │   ├── Unknown-8.jpeg
+│   │   ├── Unknown.jpeg
+│   │   ├── Veer Bharat Post (1).png
+│   │   ├── WhatsApp Image 2025-09-20 at 12.55.29.jpeg
+│   │   ├── WhatsApp Image 2025-09-22 at 14.00.59.jpeg
+│   │   ├── WhatsApp Image 2025-09-23 at 13.35.20-3.jpeg
+│   │   ├── WhatsApp Image 2025-09-23 at 13.35.21-2.jpeg
+│   │   ├── WhatsApp Image 2025-09-23 at 13.35.21-3.jpeg
+│   │   ├── WhatsApp Image 2025-09-23 at 13.35.21-4.jpeg
+│   │   ├── WhatsApp Image 2025-09-23 at 13.35.21-5.jpeg
+│   │   ├── WhatsApp Image 2025-09-23 at 13.35.21.jpeg
+│   │   ├── WhatsApp%20Image%202025-09-10%20at%2010.52.28-4.jpeg
+│   │   ├── WhatsApp-Image-2025-09-23-at-13.35.20-3-1.jpg
+│   │   ├── WhatsApp-Image-2025-09-23-at-13.35.21-2.jpg
+│   │   ├── WhatsApp-Image-2025-09-23-at-13.35.21-3.jpg
+│   │   ├── WhatsApp-Image-2025-09-23-at-13.35.21.jpg
+│   │   ├── WhatsApp-Image-2025-10-07-at-10.57.53.jpg
+│   │   ├── WhatsApp-Image-2025-10-11-at-11.53.02-2.jpg
+│   │   ├── WhatsApp-Image-2025-10-11-at-11.53.02.jpeg
+│   │   ├── banner2.jpg
+│   │   ├── banner3.jpg
+│   │   ├── banner4.jpg
+│   │   ├── bg1.jpg
+│   │   ├── bg11.jpg
+│   │   ├── bg2.jpeg
+│   │   ├── bg22.jpeg
+│   │   ├── bgim.png
+│   │   ├── blog-hero.jpg
+│   │   ├── cat4.jpeg
+│   │   ├── cat5.jpg
+│   │   ├── cat6.jpg
+│   │   ├── cat7.jpg
+│   │   ├── cu1.png
+│   │   ├── cu2.png
+│   │   ├── cu3.png
+│   │   ├── cu4.png
+│   │   ├── flavour.jpg
+│   │   ├── hero-video.mp4
+│   │   ├── home-collage.png
+│   │   ├── icon-1.jpeg
+│   │   ├── icon-2.jpeg
+│   │   ├── icon-3.jpeg
+│   │   ├── icon-4.jpeg
+│   │   ├── icon-5.jpeg
+│   │   ├── icon-6.jpeg
+│   │   ├── kachi-refined.jpg
+│   │   ├── mustard-15l.jpg
+│   │   ├── mustard-1l.jpg
+│   │   ├── mustard-200ml.jpg
+│   │   ├── mustard-500ml.jpg
+│   │   ├── mustard-5l-jar.jpg
+│   │   ├── mustard-blog.jpg
+│   │   ├── mustard.jpg
+│   │   ├── musterddd.jpg
+│   │   ├── palm-blog.jpg
+│   │   ├── prod-mustard.jpg
+│   │   ├── prod-ricebran.jpg
+│   │   ├── prod-soyabean.jpg
+│   │   ├── purity.jpg
+│   │   ├── purityy.jpg
+│   │   ├── quality.jpg
+│   │   ├── rice-bran-1.jpg
+│   │   ├── ricebran-blog.jpg
+│   │   ├── slide1.jpg
+│   │   ├── slide11.jpg
+│   │   ├── slide2.jpg
+│   │   ├── slide22.jpg
+│   │   ├── slide3.jpg
+│   │   ├── slide33.jpg
+│   │   ├── soyabean-15l.jpg
+│   │   ├── soyabean-1l.jpg
+│   │   ├── soyabean-500ml.jpg
+│   │   ├── soyabean-5l-jar.jpg
+│   │   ├── soyabean-blog.jpg
+│   │   ├── soyabeennnn.jpg
+│   │   ├── team2.jpg
+│   │   ├── veer-bharat-banner.jpg
+│   │   ├── veer-products.png
+│   │   ├── video1.mp4
+│   │   ├── video2.mp4
+│   │   └── video3.mp4
+│   ├── logo.jpg
+│   ├── logo.png
+│   ├── mustard-5l-jar.jpg
+│   ├── musterddd.jpg
+│   ├── pro-ricebran.jpg
+│   ├── prod-soyabeen.jpg
+│   ├── product-mustard.jpg
+│   ├── product-ricebran.jpg
+│   ├── product-soyabean.jpg
+│   ├── product1.jpg
+│   ├── product1.mp4
+│   ├── product2.jpg
+│   ├── product2.mp4
+│   ├── product3.jpg
+│   ├── product3.mp4
+│   ├── product4.jpg
+│   ├── product5.jpg
+│   ├── slide2.jpg
+│   ├── slide3.jpg
+│   └── veer-logo.png
+├── scripts
+│   └── seed.js
+├── server.js
+├── src
+│   ├── app
+│   │   ├── Managing-Director
+│   │   │   └── page.jsx
+│   │   ├── about
+│   │   │   └── page.js
+│   │   ├── blog
+│   │   │   ├── [id]
+│   │   │   │   └── page.jsx
+│   │   │   └── page.jsx
+│   │   ├── brand-rice
+│   │   │   └── page.jsx
+│   │   ├── brochure
+│   │   │   └── page.jsx
+│   │   ├── cart
+│   │   │   └── page.js
+│   │   ├── certificate
+│   │   │   └── page.js
+│   │   ├── contact
+│   │   │   └── page.js
+│   │   ├── gallery
+│   │   │   └── page.jsx
+│   │   ├── globals.css
+│   │   ├── layout.js
+│   │   ├── mustard-oil
+│   │   │   └── page.jsx
+│   │   ├── order
+│   │   │   └── success
+│   │   │       ├── SuccessContent.jsx
+│   │   │       └── page.js
+│   │   ├── page.js
+│   │   ├── palm-oil
+│   │   │   └── page.jsx
+│   │   ├── products
+│   │   │   ├── [slug]
+│   │   │   │   └── ProductDetail.jsx
+│   │   │   └── page.js
+│   │   ├── soyabean-oil
+│   │   │   └── page.jsx
+│   │   ├── sunflower-Oil
+│   │   │   └── page.jsx
+│   │   └── team
+│   │       └── page.jsx
+│   ├── components
+│   │   ├── AnimatedSlickSlider.jsx
+│   │   ├── CategoryCarousel.jsx
+│   │   ├── Certificate.jsx
+│   │   ├── CustomerFeedback.jsx
+│   │   ├── Footer.jsx
+│   │   ├── HealthBenefits.jsx
+│   │   ├── LogoLink.jsx
+│   │   ├── Navbar.jsx
+│   │   ├── ProductCard.jsx
+│   │   ├── ProductSlider.jsx
+│   │   ├── SplashProvider.jsx
+│   │   ├── VeerBharatHero.jsx
+│   │   └── WhyUsSection.jsx
+│   └── data
+│       └── products.js
+├── tailwind.config.js
+├── tree.txt
+└── vbbacked2-static.zip
+
+92 directories, 475 files
