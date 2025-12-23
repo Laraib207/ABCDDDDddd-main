@@ -462,19 +462,19 @@ export default function WhyUsMinimal() {
       number: "01",
       title: "Quality",
       desc: "Premium brown mustard seeds processed with traditional cold-press methods for rich flavour and unmatched quality.",
-      image: "/images/p01.png", // Mustard oil label [generated_image:41]
+      image: "/images/quality.jpg", // Mustard oil label [generated_image:41]
     },
     {
       number: "02",
       title: "Purity", 
       desc: "Double filtration process ensures pure, additive-free soybean oil that preserves essential nutrients and authentic taste.",
-      image: "/images/p02.png", // Soybean oil label [generated_image:44]
+      image: "/images/purity.png", // Soybean oil label [generated_image:44]
     },
     {
       number: "03",
       title: "Authenticity",
       desc: "Cold-pressed palm oil tradition with modern quality checks delivers the stability and aroma Indian kitchens trust.",
-      image: "/images/p03.png", // Palm oil label [generated_image:45]
+      image: "/images/authenticity.jpg", // Palm oil label [generated_image:45]
     },
   ];
 

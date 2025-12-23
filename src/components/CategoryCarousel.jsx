@@ -299,7 +299,7 @@ export default function Hero2() {
           >
             <div className="group relative h-[420px] w-full max-w-[680px] overflow-hidden rounded-3xl shadow-2xl transition-transform duration-500 hover:scale-[1.02]">
               <Image
-                src="/images/Brochure.png"
+                src="/images/VeerProduct.jpeg"
                 alt="Veer Bharat product basket showcasing premium edible oils"
                 fill
                 priority
