@@ -264,7 +264,7 @@ export default function Hero2() {
               {/* Expanded benefits, short paragraphs */}
               <div className="space-y-4 text-slate-800">
                 <p className="text-base md:text-lg">
-                  <strong>Purity you can trust.</strong> Our oils are cold-pressed or refined under strict quality checks — preserving natural aroma and nutrition.
+                  <strong>Purity you can trust.</strong> Our oils are cold-pressed or refined under strict quality checks — preserving natural aroma and nutrition..
                 </p>
 
                 <p className="text-base md:text-lg">
