@@ -449,6 +449,444 @@
 // // src/app/components/Navbar.jsx
 
 
+// "use client";
+
+// import { useState, useEffect, useRef } from "react";
+
+// export default function Navbar() {
+//   const [open, setOpen] = useState(false);
+//   const [scrolled, setScrolled] = useState(false);
+//   const [teamOpen, setTeamOpen] = useState(false);
+//   const [brochureOpen, setBrochureOpen] = useState(false);
+//   const [viewerOpen, setViewerOpen] = useState(false);
+//   const [productsOpen, setProductsOpen] = useState(false);
+
+//   const teamRef = useRef(null);
+//   const teamButtonRef = useRef(null);
+//   const brochureRef = useRef(null);
+//   const brochureButtonRef = useRef(null);
+//   const productsRef = useRef(null);
+//   const productsButtonRef = useRef(null);
+
+//   const pdfPath = "/docs/pdf/brochure.pdf";
+
+//   useEffect(() => {
+//     const handleScroll = () => setScrolled(window.scrollY > 50);
+//     window.addEventListener("scroll", handleScroll, { passive: true });
+//     return () => window.removeEventListener("scroll", handleScroll);
+//   }, []);
+
+//   useEffect(() => {
+//     const onDoc = (e) => {
+//       if (teamRef.current && !teamRef.current.contains(e.target) &&
+//           teamButtonRef.current && !teamButtonRef.current.contains(e.target)) setTeamOpen(false);
+//       if (brochureRef.current && !brochureRef.current.contains(e.target) &&
+//           brochureButtonRef.current && !brochureButtonRef.current.contains(e.target)) setBrochureOpen(false);
+//       if (productsRef.current && !productsRef.current.contains(e.target) &&
+//           productsButtonRef.current && !productsButtonRef.current.contains(e.target)) setProductsOpen(false);
+//     };
+//     document.addEventListener("click", onDoc);
+//     return () => document.removeEventListener("click", onDoc);
+//   }, []);
+
+//   useEffect(() => {
+//     const onKey = (e) => {
+//       if (e.key === "Escape") {
+//         setTeamOpen(false);
+//         setBrochureOpen(false);
+//         setProductsOpen(false);
+//         setOpen(false);
+//         setViewerOpen(false);
+//       }
+//     };
+//     document.addEventListener("keydown", onKey);
+//     return () => document.removeEventListener("keydown", onKey);
+//   }, []);
+
+//   useEffect(() => {
+//     if (open) {
+//       document.body.style.overflow = 'hidden';
+//     } else {
+//       document.body.style.overflow = 'unset';
+//     }
+//     return () => {
+//       document.body.style.overflow = 'unset';
+//     };
+//   }, [open]);
+
+//   return (
+//     <>
+//       <header
+//         className={`w-full transition-all duration-300 border-b border-[rgba(8,52,139,0.04)] ${
+//           scrolled ? "fixed top-0 left-0 z-50 py-2 shadow-sm" : "relative py-4 shadow-sm"
+//         }`}
+//         style={{ backgroundColor: "#DFC6F6" }}
+//       >
+// {/* Classical Marquee Section */}
+// <div className="overflow-hidden bg-gradient-to-r from-[#FFF8E7] via-[#FDF3D8] to-[#FFF8E7] py-1.9 border-b border-[#C9A86A]/40">
+//   <div className="animate-marquee whitespace-nowrap">
+//     <span className="inline-block text-sm font-serif text-[#B8860B] mx-8">
+//       ✨ Welcome to Veer Bharat Mustard Oil ✨
+//     </span>
+//     <span className="inline-block text-sm font-serif text-[#6A4A3C] mx-8">
+//       ✨ Welcome to Veer Bharat Mustard Oil ✨
+//     </span>
+//     <span className="inline-block text-sm font-serif text-[#B8860B] mx-8">
+//       ✨ Welcome to Veer Bharat Mustard Oil ✨
+//     </span>
+//     <span className="inline-block text-sm font-serif text-[#6A4A3C] mx-8">
+//       ✨ Welcome to Veer Bharat Mustard Oil ✨
+//     </span>
+//   </div>
+// </div>
+
+//         <div className="w-full flex items-center justify-between px-2 md:px-4">
+//           {/* Logo and Brand Name */}
+//           <div className="flex items-center flex-shrink-0">
+//             <a href="/" aria-label="Veer Bharat Home" className="block">
+//               <div style={{ width: 120, height: 100 }} className="overflow-hidden md:w-[150px] md:h-[120px]">
+//                 <img
+//                   src="/logo.png"
+//                   alt="Veer Bharat logo"
+//                   width={200}
+//                   height={124}
+//                   style={{ objectFit: "contain" }}
+//                 />
+//               </div>
+//             </a>
+//             <div className="flex flex-col leading-tight ml-2">
+//               <span className="font-extrabold text-xl sm:text-2xl md:text-3xl tracking-tight text-[#08348b]">Veer Bharat</span>
+//               <span className="italic text-sm sm:text-sm md:text-base text-[#aa2266]">वाह! मज़ा आ गया</span>
+//             </div>
+//           </div>
+
+//           {/* Desktop Navigation */}
+//           <nav className="hidden md:flex flex-1 justify-center items-center">
+//             <ul className="flex items-center gap-8 text-xl font-bold">
+//               <li><NavLink href="/">Home</NavLink></li>
+//               <li><NavLink href="/blog">Blog</NavLink></li>
+
+//               {/* Products dropdown */}
+//               <li className="relative" ref={productsRef}>
+//                 <button
+//                   ref={productsButtonRef}
+//                   onClick={() => setProductsOpen((s) => !s)}
+//                   onMouseEnter={() => setProductsOpen(true)}
+//                   onFocus={() => setProductsOpen(true)}
+//                   className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/40 focus:outline-none transition-all"
+//                 >
+//                   Products <ChevronIcon open={productsOpen} />
+//                 </button>
+//                 <div
+//                   className={`absolute top-full mt-2 left-1/2 transform -translate-x-1/2 min-w-[240px] rounded-xl bg-white text-[#082f63] shadow-2xl ring-1 ring-black/10 transition-all z-50 ${
+//                     productsOpen ? "opacity-100 pointer-events-auto translate-y-0 scale-100" : "opacity-0 pointer-events-none -translate-y-1 scale-95"
+//                   }`}
+//                   onMouseEnter={() => setProductsOpen(true)}
+//                   onMouseLeave={() => setProductsOpen(false)}
+//                 >
+//                   <ul className="py-2">
+//                     <li>
+//                       <a href="/products" className="block px-5 py-3 hover:bg-gradient-to-r hover:from-purple-50 hover:to-blue-50 text-base font-semibold" onClick={() => setProductsOpen(false)}>All Products</a>
+//                     </li>
+//                     <li>
+//                       <a href="/soyabean-oil" className="block px-5 py-3 hover:bg-gradient-to-r hover:from-purple-50 hover:to-blue-50 text-base font-semibold" onClick={() => setProductsOpen(false)}>Soyabean Oil</a>
+//                     </li>
+//                     <li>
+//                       <a href="/mustard-oil" className="block px-5 py-3 hover:bg-gradient-to-r hover:from-purple-50 hover:to-blue-50 text-base font-semibold" onClick={() => setProductsOpen(false)}>Mustard Oil</a>
+//                     </li>
+//                     <li>
+//                       <a href="/palm-oil" className="block px-5 py-3 hover:bg-gradient-to-r hover:from-purple-50 hover:to-blue-50 text-base font-semibold" onClick={() => setProductsOpen(false)}>Palm Oil</a>
+//                     </li>
+//                     <li>
+//                       <a href="/sunflower-Oil" className="block px-5 py-3 hover:bg-gradient-to-r hover:from-purple-50 hover:to-blue-50 text-base font-semibold" onClick={() => setProductsOpen(false)}>Sunflower Oil</a>
+//                     </li>
+//                      <li>
+//                       <a href="/brand-rice" className="block px-5 py-3 hover:bg-gradient-to-r hover:from-purple-50 hover:to-blue-50 text-base font-semibold" onClick={() => setProductsOpen(false)}>Brand Rice</a>
+//                     </li>
+//                   </ul>
+//                 </div>
+//               </li>
+
+//               <li className="relative" ref={brochureRef}>
+//                 <button
+//                   ref={brochureButtonRef}
+//                   onClick={() => setBrochureOpen((s) => !s)}
+//                   onMouseEnter={() => setBrochureOpen(true)}
+//                   onFocus={() => setBrochureOpen(true)}
+//                   className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/40 focus:outline-none transition-all"
+//                 >
+//                  Brochure <ChevronIcon open={brochureOpen} />
+//                 </button>
+//                 <div
+//                   className={`absolute top-full mt-2 left-1/2 transform -translate-x-1/2 min-w-[240px] rounded-xl bg-white text-[#082f63] shadow-2xl ring-1 ring-black/10 transition-all z-50 ${
+//                     brochureOpen ? "opacity-100 pointer-events-auto translate-y-0 scale-100" : "opacity-0 pointer-events-none -translate-y-1 scale-95"
+//                   }`}
+//                   onMouseEnter={() => setBrochureOpen(true)}
+//                   onMouseLeave={() => setBrochureOpen(false)}
+//                 >
+//                   <ul className="py-2">
+//                     <li>
+//                       <button
+//                         onClick={() => { setViewerOpen(true); setBrochureOpen(false); setOpen(false); }}
+//                         className="w-full text-left px-5 py-3 hover:bg-gradient-to-r hover:from-purple-50 hover:to-blue-50 text-base font-semibold"
+//                       >
+//                         View Brochure
+//                       </button>
+//                     </li>
+//                     <li>
+//                       <a href={pdfPath} download className="block px-5 py-3 hover:bg-gradient-to-r hover:from-purple-50 hover:to-blue-50 text-base font-semibold">Download Brochure</a>
+//                     </li>
+//                   </ul>
+//                 </div>
+//               </li>
+
+//               <li className="relative" ref={teamRef}>
+//                 <button
+//                   ref={teamButtonRef}
+//                   onClick={() => setTeamOpen((s) => !s)}
+//                   onMouseEnter={() => setTeamOpen(true)}
+//                   onFocus={() => setTeamOpen(true)}
+//                   className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/40 focus:outline-none transition-all"
+//                 >
+//                   Team <ChevronIcon open={teamOpen} />
+//                 </button>
+//                 <div
+//                   className={`absolute top-full mt-2 left-1/2 transform -translate-x-1/2 min-w-[200px] rounded-xl bg-white text-[#082f63] shadow-2xl ring-1 ring-black/10 transition-all z-50 ${
+//                     teamOpen ? "opacity-100 pointer-events-auto translate-y-0 scale-100" : "opacity-0 pointer-events-none -translate-y-1 scale-95"
+//                   }`}
+//                   onMouseEnter={() => setTeamOpen(true)}
+//                   onMouseLeave={() => setTeamOpen(false)}
+//                 >
+//                   <ul className="py-2">
+//                     <li>
+//                       <a href="/team" className="block px-5 py-3 hover:bg-gradient-to-r hover:from-purple-50 hover:to-blue-50 text-base font-semibold" onClick={() => setTeamOpen(false)}>Our Team</a>
+//                     </li>
+//                     <li>
+//                       <a href="/gallery" className="block px-5 py-3 hover:bg-gradient-to-r hover:from-purple-50 hover:to-blue-50 text-base font-semibold" onClick={() => setTeamOpen(false)}>Gallery</a>
+//                     </li>
+//                     <li>
+//                       <a href="/Managing-Director" className="block px-5 py-3 hover:bg-gradient-to-r hover:from-purple-50 hover:to-blue-50 text-base font-semibold" onClick={() => setTeamOpen(false)}>Managing Director</a>
+//                     </li>
+//                   </ul>
+//                 </div>
+//               </li>
+
+//               <li><NavLink href="/about">About</NavLink></li>
+//               <li><NavLink href="/contact">Contact</NavLink></li>
+//             </ul>
+//           </nav>
+
+//           {/* Mobile Hamburger Button */}
+//           <button
+//             className="md:hidden relative z-50 w-12 h-12 flex flex-col items-center justify-center gap-1.5 focus:outline-none bg-white/30 rounded-xl backdrop-blur-sm hover:bg-white/50 transition-all shadow-lg"
+//             onClick={() => setOpen(!open)}
+//             aria-label="Toggle menu"
+//           >
+//             <span
+//               className={`block w-7 h-0.5 bg-gradient-to-r from-[#08348b] to-[#aa2266] rounded-full transition-all duration-300 ease-in-out ${
+//                 open ? "rotate-45 translate-y-2" : ""
+//               }`}
+//             />
+//             <span
+//               className={`block w-7 h-0.5 bg-gradient-to-r from-[#08348b] to-[#aa2266] rounded-full transition-all duration-300 ease-in-out ${
+//                 open ? "opacity-0 scale-0" : "opacity-100 scale-100"
+//               }`}
+//             />
+//             <span
+//               className={`block w-7 h-0.5 bg-gradient-to-r from-[#08348b] to-[#aa2266] rounded-full transition-all duration-300 ease-in-out ${
+//                 open ? "-rotate-45 -translate-y-2" : ""
+//               }`}
+//             />
+//           </button>
+//         </div>
+
+//         {/* Mobile Slide Menu */}
+//         <div
+//           className={`md:hidden fixed inset-0 z-40 transition-opacity duration-500 ${
+//             open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+//           }`}
+//           style={{ top: scrolled ? "95px" : "145px" }}
+//         >
+//           <div
+//             className="absolute inset-0 bg-gradient-to-br from-black/60 via-purple-900/40 to-black/60 backdrop-blur-md"
+//             onClick={() => setOpen(false)}
+//           />
+
+//           <div
+//             className={`absolute right-0 top-0 bottom-0 w-[320px] max-w-[85vw] bg-gradient-to-br from-[#DFC6F6] via-white to-[#f0e4ff] shadow-2xl transform transition-all duration-500 ease-out overflow-y-auto ${
+//               open ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
+//             }`}
+//             style={{
+//               backgroundImage: 'linear-gradient(135deg, #DFC6F6 0%, #ffffff 50%, #f0e4ff 100%)',
+//               boxShadow: '-10px 0 50px rgba(8, 52, 139, 0.3)'
+//             }}
+//           >
+//             <div className="h-2 bg-gradient-to-r from-[#08348b] via-[#aa2266] to-[#08348b]" />
+            
+//             <div className="px-6 py-8 flex flex-col gap-3">
+//               <div className={`text-center mb-4 transition-all duration-700 ${open ? 'translate-y-0 opacity-100' : '-translate-y-4 opacity-0'}`}>
+//                 <h3 className="text-2xl font-extrabold text-[#08348b] tracking-tight">Menu</h3>
+//                 <div className="w-16 h-1 bg-gradient-to-r from-[#08348b] to-[#aa2266] rounded-full mx-auto mt-2" />
+//               </div>
+
+//               <a 
+//                 href="/" 
+//                 onClick={() => setOpen(false)}
+//                 className={`px-5 py-4 rounded-xl text-[#08348b] font-bold text-lg bg-gradient-to-r from-white/70 to-white/50 hover:from-white hover:to-white/80 transition-all transform hover:scale-105 hover:shadow-lg shadow-md backdrop-blur-sm border border-purple-100 flex items-center gap-3 duration-700 delay-100 ${open ? 'translate-x-0 opacity-100' : 'translate-x-8 opacity-0'}`}
+//               >
+//                 <span className="text-2xl">🏠</span>
+//                 Home
+//               </a>
+              
+//               <a 
+//                 href="/blog" 
+//                 onClick={() => setOpen(false)}
+//                 className={`px-5 py-4 rounded-xl text-[#08348b] font-bold text-lg bg-gradient-to-r from-white/70 to-white/50 hover:from-white hover:to-white/80 transition-all transform hover:scale-105 hover:shadow-lg shadow-md backdrop-blur-sm border border-purple-100 flex items-center gap-3 duration-700 delay-150 ${open ? 'translate-x-0 opacity-100' : 'translate-x-8 opacity-0'}`}
+//               >
+//                 <span className="text-2xl">📝</span>
+//                 Blog
+//               </a>
+
+//               <details className={`group transition-all duration-700 delay-200 ${open ? 'translate-x-0 opacity-100' : 'translate-x-8 opacity-0'}`}>
+//                 <summary className="px-5 py-4 cursor-pointer list-none flex items-center justify-between bg-gradient-to-r from-white/70 to-white/50 rounded-xl hover:from-white hover:to-white/80 transition-all shadow-md hover:shadow-lg backdrop-blur-sm border border-purple-100">
+//                   <span className="flex items-center gap-3 text-[#08348b] font-bold text-lg">
+//                     <span className="text-2xl">🛍️</span>
+//                     Products
+//                   </span>
+//                   <span className="text-[#08348b] text-xl font-bold group-open:rotate-180 transition-transform duration-300">▾</span>
+//                 </summary>
+//                 <div className="pl-8 pr-4 pb-2 pt-3 flex flex-col gap-2 animate-fadeIn">
+//                   <a href="/products" className="px-4 py-3 rounded-lg text-[#08348b] hover:bg-white/80 bg-white/40 font-semibold transition-all transform hover:translate-x-1 text-base border border-purple-50" onClick={() => setOpen(false)}>All Products</a>
+//                   <a href="/soyabean-oil" className="px-4 py-3 rounded-lg text-[#08348b] hover:bg-white/80 bg-white/40 font-semibold transition-all transform hover:translate-x-1 text-base border border-purple-50" onClick={() => setOpen(false)}>Soyabean Oil</a>
+//                   <a href="/mustard-oil" className="px-4 py-3 rounded-lg text-[#08348b] hover:bg-white/80 bg-white/40 font-semibold transition-all transform hover:translate-x-1 text-base border border-purple-50" onClick={() => setOpen(false)}>Mustard Oil</a>
+//                   <a href="/palm-oil" className="px-4 py-3 rounded-lg text-[#08348b] hover:bg-white/80 bg-white/40 font-semibold transition-all transform hover:translate-x-1 text-base border border-purple-50" onClick={() => setOpen(false)}>Palm Oil</a>
+//                   <a href="/brand-rice" className="px-4 py-3 rounded-lg text-[#08348b] hover:bg-white/80 bg-white/40 font-semibold transition-all transform hover:translate-x-1 text-base border border-purple-50" onClick={() => setOpen(false)}>Brand Rice</a>
+//                 </div>
+//               </details>
+
+//               <details className={`group transition-all duration-700 delay-250 ${open ? 'translate-x-0 opacity-100' : 'translate-x-8 opacity-0'}`}>
+//                 <summary className="px-5 py-4 cursor-pointer list-none flex items-center justify-between bg-gradient-to-r from-white/70 to-white/50 rounded-xl hover:from-white hover:to-white/80 transition-all shadow-md hover:shadow-lg backdrop-blur-sm border border-purple-100">
+//                   <span className="flex items-center gap-3 text-[#08348b] font-bold text-lg">
+//                     <span className="text-2xl">📄</span>
+//                     Brochure
+//                   </span>
+//                   <span className="text-[#08348b] text-xl font-bold group-open:rotate-180 transition-transform duration-300">▾</span>
+//                 </summary>
+//                 <div className="pl-8 pr-4 pb-2 pt-3 flex flex-col gap-2">
+//                   <button
+//                     onClick={() => { setViewerOpen(true); setOpen(false); }}
+//                     className="text-left px-4 py-3 rounded-lg text-[#08348b] hover:bg-white/80 bg-white/40 font-semibold transition-all text-base border border-purple-50"
+//                   >
+//                     View Brochure
+//                   </button>
+//                   <a
+//                     href={pdfPath}
+//                     download
+//                     className="px-4 py-3 rounded-lg text-[#08348b] hover:bg-white/80 bg-white/40 font-semibold transition-all text-base border border-purple-50"
+//                     onClick={() => setOpen(false)}
+//                   >
+//                     Download Brochure
+//                   </a>
+//                 </div>
+//               </details>
+
+//               <details className={`group transition-all duration-700 delay-300 ${open ? 'translate-x-0 opacity-100' : 'translate-x-8 opacity-0'}`}>
+//                 <summary className="px-5 py-4 cursor-pointer list-none flex items-center justify-between bg-gradient-to-r from-white/70 to-white/50 rounded-xl hover:from-white hover:to-white/80 transition-all shadow-md hover:shadow-lg backdrop-blur-sm border border-purple-100">
+//                   <span className="flex items-center gap-3 text-[#08348b] font-bold text-lg">
+//                     <span className="text-2xl">👥</span>
+//                     Team
+//                   </span>
+//                   <span className="text-[#08348b] text-xl font-bold group-open:rotate-180 transition-transform duration-300">▾</span>
+//                 </summary>
+//                 <div className="pl-8 pr-4 pb-2 pt-3 flex flex-col gap-2">
+//                   <a href="/team" className="px-4 py-3 rounded-lg text-[#08348b] hover:bg-white/80 bg-white/40 font-semibold transition-all transform hover:translate-x-1 text-base border border-purple-50" onClick={() => setOpen(false)}>Our Team</a>
+//                   <a href="/gallery" className="px-4 py-3 rounded-lg text-[#08348b] hover:bg-white/80 bg-white/40 font-semibold transition-all transform hover:translate-x-1 text-base border border-purple-50" onClick={() => setOpen(false)}>Gallery</a>
+//                   <a href="/Managing-Director" className="px-4 py-3 rounded-lg text-[#08348b] hover:bg-white/80 bg-white/40 font-semibold transition-all transform hover:translate-x-1 text-base border border-purple-50" onClick={() => setOpen(false)}>Managing Director</a>
+//                 </div>
+//               </details>
+
+//               <a 
+//                 href="/about" 
+//                 onClick={() => setOpen(false)}
+//                 className={`px-5 py-4 rounded-xl text-[#08348b] font-bold text-lg bg-gradient-to-r from-white/70 to-white/50 hover:from-white hover:to-white/80 transition-all transform hover:scale-105 hover:shadow-lg shadow-md backdrop-blur-sm border border-purple-100 flex items-center gap-3 duration-700 delay-350 ${open ? 'translate-x-0 opacity-100' : 'translate-x-8 opacity-0'}`}
+//               >
+//                 <span className="text-2xl">ℹ️</span>
+//                 About
+//               </a>
+              
+//               <a 
+//                 href="/contact" 
+//                 onClick={() => setOpen(false)}
+//                 className={`px-5 py-4 rounded-xl text-[#08348b] font-bold text-lg bg-gradient-to-r from-white/70 to-white/50 hover:from-white hover:to-white/80 transition-all transform hover:scale-105 hover:shadow-lg shadow-md backdrop-blur-sm border border-purple-100 flex items-center gap-3 duration-700 delay-400 ${open ? 'translate-x-0 opacity-100' : 'translate-x-8 opacity-0'}`}
+//               >
+//                 <span className="text-2xl">📞</span>
+//                 Contact
+//               </a>
+//             </div>
+
+//             <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[#08348b]/10 to-transparent pointer-events-none" />
+//           </div>
+//         </div>
+//       </header>
+
+//       {/* Brochure modal */}
+//       {viewerOpen && (
+//         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+//           <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setViewerOpen(false)} />
+//           <div className="relative w-full max-w-6xl h-[80vh] bg-white rounded-2xl shadow-2xl overflow-hidden">
+//             <div className="flex items-center justify-between px-6 py-4 border-b bg-gradient-to-r from-[#DFC6F6] to-white">
+//               <h3 className="text-xl font-bold text-[#082f63]">Brochure Preview</h3>
+//               <div className="flex items-center gap-3">
+//                 <a href={pdfPath} download className="px-4 py-2 text-base font-semibold rounded-lg border-2 border-[#08348b] text-[#08348b] hover:bg-[#08348b] hover:text-white transition-all">Download</a>
+//                 <button onClick={() => setViewerOpen(false)} className="px-4 py-2 text-base font-semibold rounded-lg border-2 border-gray-300 hover:bg-gray-100 transition-all">Close</button>
+//               </div>
+//             </div>
+//             <iframe src={`${pdfPath}#view=FitH`} className="w-full h-full" />
+//           </div>
+//         </div>
+//       )}
+
+//       <style jsx>{`
+//         @keyframes marquee {
+//           0% {
+//             transform: translateX(0%);
+//           }
+//           100% {
+//             transform: translateX(-50%);
+//           }
+//         }
+//         .animate-marquee {
+//           animation: marquee 25s linear infinite;
+//           display: inline-block;
+//         }
+//       `}</style>
+//     </>
+//   );
+// }
+
+// function NavLink({ href, children }) {
+//   return (
+//     <a href={href} className="px-3 py-2 text-gray-700 hover:text-[#08348b] transition-all hover:scale-105">
+//       {children}
+//     </a>
+//   );
+// }
+
+// function ChevronIcon({ open }) {
+//   return (
+//     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className={`transition-transform duration-300 ${open ? "rotate-180" : ""}`}>
+//       <path d="M6 9l6 6 6-6" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+//     </svg>
+//   );
+// }
+
+
+
+
+
+
+
+
 "use client";
 
 import { useState, useEffect, useRef } from "react";
@@ -522,29 +960,36 @@ export default function Navbar() {
         }`}
         style={{ backgroundColor: "#DFC6F6" }}
       >
-{/* Classical Marquee Section */}
-<div className="overflow-hidden bg-gradient-to-r from-[#FFF8E7] via-[#FDF3D8] to-[#FFF8E7] py-1.9 border-b border-[#C9A86A]/40">
-  <div className="animate-marquee whitespace-nowrap">
-    <span className="inline-block text-sm font-serif text-[#B8860B] mx-8">
-      ✨ Welcome to Veer Bharat Mustard Oil ✨
-    </span>
-    <span className="inline-block text-sm font-serif text-[#6A4A3C] mx-8">
-      ✨ Welcome to Veer Bharat Mustard Oil ✨
-    </span>
-    <span className="inline-block text-sm font-serif text-[#B8860B] mx-8">
-      ✨ Welcome to Veer Bharat Mustard Oil ✨
-    </span>
-    <span className="inline-block text-sm font-serif text-[#6A4A3C] mx-8">
-      ✨ Welcome to Veer Bharat Mustard Oil ✨
-    </span>
-  </div>
-</div>
+        {/* Christmas Marquee Section */}
+        <div className="overflow-hidden bg-gradient-to-r from-red-600 via-green-600 to-red-600 py-2 border-b border-yellow-400/40 relative">
+          <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMiIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjIpIi8+PC9zdmc+')] opacity-30"></div>
+          <div className="animate-marquee whitespace-nowrap relative z-10">
+            <span className="inline-block text-sm font-bold text-white mx-6 drop-shadow-lg">
+              🎄 Merry Christmas from Veer Bharat! 🎅
+            </span>
+            <span className="inline-block text-sm font-bold text-yellow-200 mx-6 drop-shadow-lg">
+              ⛄ Wishing you joy and prosperity! ❄️
+            </span>
+            {/* <span className="inline-block text-sm font-bold text-white mx-6 drop-shadow-lg">
+              🎁 Happy Holidays & Season's Greetings! ✨
+            </span> */}
+            <span className="inline-block text-sm font-bold text-yellow-200 mx-6 drop-shadow-lg">
+              🔔 Merry Christmas from Veer Bharat! 🎄
+            </span>
+            <span className="inline-block text-sm font-bold text-white mx-6 drop-shadow-lg">
+              🎄 Merry Christmas from Veer Bharat! 🎅
+            </span>
+            <span className="inline-block text-sm font-bold text-yellow-200 mx-6 drop-shadow-lg">
+              ⛄ Wishing you joy and prosperity! ❄️
+            </span>
+          </div>
+        </div>
 
         <div className="w-full flex items-center justify-between px-2 md:px-4">
-          {/* Logo and Brand Name */}
+          {/* Logo and Brand Name with Christmas Hat */}
           <div className="flex items-center flex-shrink-0">
-            <a href="/" aria-label="Veer Bharat Home" className="block">
-              <div style={{ width: 120, height: 100 }} className="overflow-hidden md:w-[150px] md:h-[120px]">
+            <a href="/" aria-label="Veer Bharat Home" className="block relative">
+              <div style={{ width: 120, height: 100 }} className="overflow-visible md:w-[150px] md:h-[120px] relative">
                 <img
                   src="/logo.png"
                   alt="Veer Bharat logo"
@@ -552,11 +997,27 @@ export default function Navbar() {
                   height={124}
                   style={{ objectFit: "contain" }}
                 />
+                {/* Santa Hat on Logo */}
+                <div className="absolute -top-2 -right-2 w-12 h-12 md:w-14 md:h-14">
+                  <div className="relative w-full h-full animate-swing">
+                    <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-[16px] border-l-transparent border-r-[16px] border-r-transparent border-b-[28px] border-b-red-600"></div>
+                    <div className="absolute top-[26px] left-1/2 transform -translate-x-1/2 w-8 h-3 bg-white rounded-full"></div>
+                    <div className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-3 h-3 bg-white rounded-full"></div>
+                  </div>
+                </div>
               </div>
             </a>
-            <div className="flex flex-col leading-tight ml-2">
-              <span className="font-extrabold text-xl sm:text-2xl md:text-3xl tracking-tight text-[#08348b]">Veer Bharat</span>
-              <span className="italic text-sm sm:text-sm md:text-base text-[#aa2266]">वाह! मज़ा आ गया</span>
+            <div className="flex flex-col leading-tight ml-2 relative">
+              <span className="font-extrabold text-xl sm:text-2xl md:text-3xl tracking-tight text-[#08348b] relative">
+                Veer Bharat
+                {/* Sparkle Effects */}
+                <span className="absolute -top-1 -right-3 text-yellow-400 animate-twinkle" style={{animationDelay: '0s'}}>✨</span>
+                <span className="absolute -bottom-1 -left-2 text-yellow-400 animate-twinkle" style={{animationDelay: '0.5s'}}>✨</span>
+              </span>
+              <span className="italic text-sm sm:text-sm md:text-base text-[#aa2266] relative">
+                वाह! मज़ा आ गया
+                <span className="absolute -top-2 right-0 text-red-500 animate-twinkle text-xs" style={{animationDelay: '0.3s'}}>🎄</span>
+              </span>
             </div>
           </div>
 
@@ -859,6 +1320,33 @@ export default function Navbar() {
           animation: marquee 25s linear infinite;
           display: inline-block;
         }
+        
+        @keyframes twinkle {
+          0%, 100% {
+            opacity: 1;
+            transform: scale(1);
+          }
+          50% {
+            opacity: 0.3;
+            transform: scale(0.8);
+          }
+        }
+        .animate-twinkle {
+          animation: twinkle 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes swing {
+          0%, 100% {
+            transform: rotate(-5deg);
+          }
+          50% {
+            transform: rotate(5deg);
+          }
+        }
+        .animate-swing {
+          animation: swing 2s ease-in-out infinite;
+          transform-origin: top center;
+        }
       `}</style>
     </>
   );
@@ -879,3 +1367,4 @@ function ChevronIcon({ open }) {
     </svg>
   );
 }
+
