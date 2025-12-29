@@ -594,7 +594,7 @@ const Footer = () => {
         {/* COPYRIGHT SECTION */}
         <div className="mt-10 pt-5 border-t-2 border-gray-400">
           <p className="text-center text-base font-bold text-gray-900">
-            Copyright © 2025 <span className="font-black">VEER BHARAT</span>. All Rights Reserved.
+            Copyright © 2025 <span className="font-black">VEER BHARAT</span>. All Rights Reserved. Developed by <a href="https://www.thelaraib.com" target="_blank" rel="noopener noreferrer" className="underline">thelaraib</a>
           </p>
         </div>
       </div>
