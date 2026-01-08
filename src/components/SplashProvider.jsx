@@ -1435,7 +1435,7 @@ export default function SplashProvider({ children }) {
   const timeoutRef = useRef(null);
   const pathname = usePathname();
 
-  const DURATION = 4000;
+  const DURATION = 4500; // 4.5 seconds for a premium feel
 
   useEffect(() => {
     setMounted(true);
@@ -1445,15 +1445,14 @@ export default function SplashProvider({ children }) {
     if (!mounted) return;
 
     const isHomePage = pathname === "/";
-    
     if (typeof window !== "undefined" && isHomePage) {
-      const splashData = JSON.parse(window.sessionStorage.getItem('splashShown') || '{}');
+      const splashData = JSON.parse(window.sessionStorage.getItem("splashShown") || "{}");
       const today = new Date().toDateString();
-      
+
       if (splashData.date !== today) {
         setVisible(true);
-        window.sessionStorage.setItem('splashShown', JSON.stringify({ date: today }));
-        
+        window.sessionStorage.setItem("splashShown", JSON.stringify({ date: today }));
+
         timeoutRef.current = setTimeout(() => {
           setVisible(false);
         }, DURATION);
@@ -1493,15 +1492,13 @@ export default function SplashProvider({ children }) {
 
   return (
     <SplashContext.Provider value={{ show, hideNow, visible }}>
-      {visible && <ChristmasSplash duration={DURATION} />}
-      <div style={{ visibility: visible ? 'hidden' : 'visible' }}>
-        {children}
-      </div>
+      {visible && <NewYearSplash duration={DURATION} />}
+      <div style={{ visibility: visible ? "hidden" : "visible" }}>{children}</div>
     </SplashContext.Provider>
   );
 }
 
-function ChristmasSplash({ duration = 4000 }) {
+function NewYearSplash({ duration = 4500 }) {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
@@ -1521,711 +1518,205 @@ function ChristmasSplash({ duration = 4000 }) {
   return (
     <div
       style={{
-        position: 'fixed',
+        position: "fixed",
         inset: 0,
         zIndex: 9999,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        background: 'linear-gradient(180deg, #0c1445 0%, #1a237e 30%, #283593 60%, #1a237e 100%)',
-        overflow: 'hidden',
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        // Luxurious Deep Blue & Golden Mustard Gradient
+        background: "radial-gradient(circle at center, #1a237e 0%, #0c1445 60%, #050a24 100%)",
+        overflow: "hidden",
+        fontFamily: "'Inter', sans-serif",
       }}
     >
-      {/* Northern Lights Effect */}
-      <div
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          height: '60%',
-          background: 'radial-gradient(ellipse at 50% 0%, rgba(0, 255, 136, 0.15) 0%, rgba(0, 200, 255, 0.1) 30%, transparent 70%)',
-          animation: 'auroraWave 8s ease-in-out infinite',
-        }}
-      />
+      {/* Golden Mustard Glow (Vibe of Mustard/Soybean Oil) */}
+      <div style={{
+        position: 'absolute',
+        width: '100%',
+        height: '100%',
+        background: 'radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.1) 0%, transparent 70%)',
+        animation: 'pulseGlow 4s ease-in-out infinite'
+      }} />
 
-      {/* Snowfall */}
-      {[...Array(60)].map((_, i) => (
+      {/* Snowfall / Winter Frequency */}
+      {[...Array(50)].map((_, i) => (
         <div
           key={`snow-${i}`}
           style={{
-            position: 'absolute',
-            width: `${Math.random() * 8 + 4}px`,
-            height: `${Math.random() * 8 + 4}px`,
-            background: 'radial-gradient(circle, #ffffff 0%, rgba(255,255,255,0.8) 50%, transparent 100%)',
-            borderRadius: '50%',
+            position: "absolute",
+            width: `${Math.random() * 5 + 2}px`,
+            height: `${Math.random() * 5 + 2}px`,
+            background: "white",
+            borderRadius: "50%",
             left: `${Math.random() * 100}%`,
             top: `-${Math.random() * 20}%`,
             animation: `snowFall ${Math.random() * 4 + 4}s linear infinite`,
             animationDelay: `${Math.random() * 5}s`,
-            opacity: Math.random() * 0.5 + 0.5,
-            boxShadow: '0 0 10px rgba(255,255,255,0.8)',
+            opacity: Math.random() * 0.8,
+            filter: "blur(1px)",
           }}
         />
       ))}
 
-      {/* Twinkling Stars */}
-      {[...Array(40)].map((_, i) => (
+      {/* Background Fireworks */}
+      {[...Array(8)].map((_, i) => (
         <div
-          key={`star-${i}`}
+          key={`firework-${i}`}
           style={{
-            position: 'absolute',
-            width: `${Math.random() * 4 + 2}px`,
-            height: `${Math.random() * 4 + 2}px`,
-            background: '#fff',
-            borderRadius: '50%',
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 50}%`,
-            animation: `twinkle ${Math.random() * 2 + 1}s ease-in-out infinite`,
-            animationDelay: `${Math.random() * 3}s`,
-            boxShadow: '0 0 6px #fff, 0 0 12px #fff',
+            position: "absolute",
+            left: `${Math.random() * 90 + 5}%`,
+            top: `${Math.random() * 60 + 5}%`,
+            width: '4px',
+            height: '4px',
+            background: 'transparent',
+            boxShadow: '0 0 0 0 white',
+            animation: `fireworkExplode ${3 + Math.random() * 2}s ease-out infinite`,
+            animationDelay: `${i * 0.5}s`,
           }}
         />
-      ))}
-
-      {/* Christmas Tree */}
-      <div
-        style={{
-          position: 'absolute',
-          left: '8%',
-          bottom: '5%',
-          animation: 'treeGlow 2s ease-in-out infinite',
-        }}
-      >
-        {/* Tree Star */}
-        <div
-          style={{
-            position: 'absolute',
-            top: '-40px',
-            left: '50%',
-            transform: 'translateX(-50%)',
-            fontSize: '40px',
-            animation: 'starGlow 1s ease-in-out infinite',
-            filter: 'drop-shadow(0 0 20px #ffd700)',
-          }}
-        >
-          ⭐
-        </div>
-        
-        {/* Tree Layers */}
-        {[0, 1, 2, 3].map((layer) => (
-          <div
-            key={layer}
-            style={{
-              width: 0,
-              height: 0,
-              borderLeft: `${60 + layer * 25}px solid transparent`,
-              borderRight: `${60 + layer * 25}px solid transparent`,
-              borderBottom: `${80 + layer * 15}px solid #0d5c0d`,
-              marginTop: layer === 0 ? 0 : '-30px',
-              position: 'relative',
-              filter: 'drop-shadow(0 5px 15px rgba(0,100,0,0.5))',
-            }}
-          >
-            {/* Tree Decorations */}
-            {[...Array(layer + 2)].map((_, j) => (
-              <div
-                key={j}
-                style={{
-                  position: 'absolute',
-                  width: '12px',
-                  height: '12px',
-                  borderRadius: '50%',
-                  background: ['#ff0000', '#ffd700', '#00bcd4', '#ff69b4'][j % 4],
-                  left: `${-40 - layer * 20 + j * 30}px`,
-                  top: `${30 + j * 15}px`,
-                  boxShadow: `0 0 10px ${['#ff0000', '#ffd700', '#00bcd4', '#ff69b4'][j % 4]}`,
-                  animation: `ornamentGlow 1.5s ease-in-out infinite`,
-                  animationDelay: `${j * 0.3}s`,
-                }}
-              />
-            ))}
-          </div>
-        ))}
-        
-        {/* Tree Trunk */}
-        <div
-          style={{
-            width: '40px',
-            height: '50px',
-            background: 'linear-gradient(90deg, #5d4037, #8d6e63, #5d4037)',
-            margin: '0 auto',
-            marginTop: '-10px',
-            borderRadius: '0 0 8px 8px',
-          }}
-        />
-        
-        {/* Presents under tree */}
-        <div style={{ display: 'flex', gap: '10px', marginTop: '10px', justifyContent: 'center' }}>
-          {[
-            { bg: '#e53935', ribbon: '#ffd700' },
-            { bg: '#43a047', ribbon: '#ff5722' },
-            { bg: '#1e88e5', ribbon: '#ffeb3b' },
-          ].map((present, i) => (
-            <div
-              key={i}
-              style={{
-                width: '35px',
-                height: '30px',
-                background: present.bg,
-                borderRadius: '4px',
-                position: 'relative',
-                animation: 'presentBounce 2s ease-in-out infinite',
-                animationDelay: `${i * 0.4}s`,
-                boxShadow: `0 4px 15px ${present.bg}80`,
-              }}
-            >
-              <div
-                style={{
-                  position: 'absolute',
-                  top: 0,
-                  left: '50%',
-                  transform: 'translateX(-50%)',
-                  width: '8px',
-                  height: '100%',
-                  background: present.ribbon,
-                }}
-              />
-              <div
-                style={{
-                  position: 'absolute',
-                  top: '-8px',
-                  left: '50%',
-                  transform: 'translateX(-50%)',
-                  fontSize: '16px',
-                }}
-              >
-                🎀
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Santa Claus */}
-      <div
-        style={{
-          position: 'absolute',
-          right: '5%',
-          bottom: '10%',
-          animation: 'santaFloat 3s ease-in-out infinite',
-        }}
-      >
-        <div style={{ fontSize: '100px', filter: 'drop-shadow(0 10px 30px rgba(0,0,0,0.5))' }}>
-          🎅
-        </div>
-        {/* Santa's Speech Bubble */}
-        <div
-          style={{
-            position: 'absolute',
-            top: '-60px',
-            left: '-120px',
-            background: 'rgba(255,255,255,0.95)',
-            padding: '12px 18px',
-            borderRadius: '20px',
-            fontSize: '14px',
-            fontWeight: 'bold',
-            color: '#c62828',
-            boxShadow: '0 4px 20px rgba(0,0,0,0.3)',
-            animation: 'bubblePop 0.5s ease-out',
-            whiteSpace: 'nowrap',
-          }}
-        >
-          Ho Ho Ho! 🎁✨
-          <div
-            style={{
-              position: 'absolute',
-              bottom: '-10px',
-              right: '20px',
-              width: 0,
-              height: 0,
-              borderLeft: '10px solid transparent',
-              borderRight: '10px solid transparent',
-              borderTop: '12px solid rgba(255,255,255,0.95)',
-            }}
-          />
-        </div>
-        {/* Mustard Oil Gift */}
-        <div
-          style={{
-            position: 'absolute',
-            bottom: '-20px',
-            left: '20px',
-            fontSize: '40px',
-            animation: 'giftFloat 2s ease-in-out infinite',
-          }}
-        >
-          🫒
-        </div>
-      </div>
-
-      {/* Reindeer */}
-      <div
-        style={{
-          position: 'absolute',
-          right: '20%',
-          top: '15%',
-          fontSize: '50px',
-          animation: 'reindeerFly 6s linear infinite',
-        }}
-      >
-        🦌
-      </div>
-
-      {/* Sleigh */}
-      <div
-        style={{
-          position: 'absolute',
-          right: '25%',
-          top: '18%',
-          fontSize: '40px',
-          animation: 'reindeerFly 6s linear infinite',
-          animationDelay: '0.3s',
-        }}
-      >
-        🛷
-      </div>
-
-      {/* Christmas Lights Garland Top */}
-      <div
-        style={{
-          position: 'absolute',
-          top: '5%',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          display: 'flex',
-          gap: '20px',
-          animation: 'garlandSwing 3s ease-in-out infinite',
-        }}
-      >
-        {[...Array(15)].map((_, i) => (
-          <div
-            key={i}
-            style={{
-              width: '16px',
-              height: '24px',
-              background: ['#ff0000', '#00ff00', '#ffff00', '#00bfff', '#ff69b4'][i % 5],
-              borderRadius: '50% 50% 50% 50% / 60% 60% 40% 40%',
-              boxShadow: `0 0 15px ${['#ff0000', '#00ff00', '#ffff00', '#00bfff', '#ff69b4'][i % 5]}`,
-              animation: `lightBlink 0.5s ease-in-out infinite`,
-              animationDelay: `${i * 0.1}s`,
-            }}
-          />
-        ))}
-      </div>
-
-      {/* Holly Decorations */}
-      <div style={{ position: 'absolute', top: '10%', left: '5%', fontSize: '40px' }}>🎄</div>
-      <div style={{ position: 'absolute', top: '15%', right: '8%', fontSize: '35px' }}>❄️</div>
-      <div style={{ position: 'absolute', bottom: '20%', left: '3%', fontSize: '30px' }}>🔔</div>
-
-      {/* Candy Canes */}
-      {[...Array(6)].map((_, i) => (
-        <div
-          key={`candy-${i}`}
-          style={{
-            position: 'absolute',
-            left: `${10 + i * 15}%`,
-            bottom: '0',
-            fontSize: '30px',
-            transform: `rotate(${i % 2 === 0 ? 15 : -15}deg)`,
-            animation: `candySway 2s ease-in-out infinite`,
-            animationDelay: `${i * 0.2}s`,
-          }}
-        >
-          🍬
-        </div>
       ))}
 
       {/* Main Content Container */}
       <div
         style={{
-          position: 'relative',
+          position: "relative",
           zIndex: 10,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          animation: 'contentZoomIn 0.8s ease-out',
-          padding: '0 20px',
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          textAlign: "center",
+          padding: "0 20px",
+          animation: "mainReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1)",
         }}
       >
-        {/* Company Logo with Christmas Frame */}
+        {/* Logo with Oil-Gold Border */}
         <div
           style={{
-            position: 'relative',
-            marginBottom: '25px',
-            animation: 'logoReveal 1s ease-out',
+            width: "140px",
+            height: "140px",
+            borderRadius: "50%",
+            background: "white",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            boxShadow: "0 20px 50px rgba(0,0,0,0.5), 0 0 30px rgba(255, 193, 7, 0.4)",
+            border: "5px solid #FFC107", // Mustard Golden Vibe
+            marginBottom: "30px",
+            animation: "logoEntrance 1.5s ease-out, logoFloat 4s ease-in-out infinite",
           }}
         >
-          {/* Wreath Border */}
-          <div
-            style={{
-              position: 'absolute',
-              inset: '-30px',
-              borderRadius: '50%',
-              border: '8px solid transparent',
-              background: 'linear-gradient(45deg, #228b22, #006400, #228b22) border-box',
-              animation: 'wreathGlow 2s ease-in-out infinite',
-              boxShadow: '0 0 30px rgba(34, 139, 34, 0.5), inset 0 0 30px rgba(34, 139, 34, 0.3)',
-            }}
-          />
-
-          {/* Holly Berries */}
-          {[0, 1, 2, 3].map((i) => (
-            <div
-              key={i}
-              style={{
-                position: 'absolute',
-                width: '16px',
-                height: '16px',
-                background: 'radial-gradient(circle at 30% 30%, #ff4444, #cc0000)',
-                borderRadius: '50%',
-                top: i < 2 ? '-25px' : 'auto',
-                bottom: i >= 2 ? '-25px' : 'auto',
-                left: i % 2 === 0 ? '-20px' : 'auto',
-                right: i % 2 === 1 ? '-20px' : 'auto',
-                boxShadow: '0 0 10px #ff0000',
-                animation: 'berryPulse 1s ease-in-out infinite',
-                animationDelay: `${i * 0.25}s`,
-              }}
-            />
-          ))}
-
-          {/* Glowing Aura */}
-          <div
-            style={{
-              position: 'absolute',
-              inset: '-20px',
-              borderRadius: '50%',
-              background: 'radial-gradient(circle, rgba(255,215,0,0.4) 0%, rgba(255,0,0,0.2) 50%, transparent 70%)',
-              animation: 'auraPulse 2s ease-in-out infinite',
-            }}
-          />
-
-          {/* Logo Container */}
-          <div
-            style={{
-              width: '130px',
-              height: '130px',
-              borderRadius: '50%',
-              background: 'linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              boxShadow: '0 10px 40px rgba(0,0,0,0.4), 0 0 60px rgba(255,215,0,0.3)',
-              animation: 'logoFloat 3s ease-in-out infinite',
-              overflow: 'hidden',
-              border: '4px solid #ffd700',
-            }}
-          >
-            <Image
-              src="/logo.png"
-              alt="Veer Bharat Logo"
-              width={100}
-              height={100}
-              style={{
-                objectFit: 'contain',
-              }}
-            />
-          </div>
-
-          {/* Santa Hat on Logo */}
-          <div
-            style={{
-              position: 'absolute',
-              top: '-35px',
-              left: '50%',
-              transform: 'translateX(-50%) rotate(-15deg)',
-              fontSize: '50px',
-              animation: 'hatWiggle 2s ease-in-out infinite',
-            }}
-          >
-            🎅
-          </div>
-
-          {/* Rotating Snowflakes */}
-          {[...Array(4)].map((_, i) => (
-            <div
-              key={i}
-              style={{
-                position: 'absolute',
-                top: '50%',
-                left: '50%',
-                fontSize: '24px',
-                opacity: 0.7,
-                animation: `snowflakeRotate 8s linear infinite`,
-                animationDelay: `${i * 2}s`,
-              }}
-            >
-              ❄️
-            </div>
-          ))}
+          <Image src="/logo.png" alt="LaraibdTec Logo" width={100} height={100} />
         </div>
 
-        {/* Merry Christmas Text */}
-        <div
+        {/* Happy New Year Title */}
+        <h1
           style={{
-            fontSize: 'clamp(36px, 8vw, 56px)',
-            fontWeight: 'bold',
-            background: 'linear-gradient(90deg, #ffd700, #ff6b6b, #ffd700, #ff6b6b, #ffd700)',
-            backgroundSize: '200% auto',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
-            textShadow: '0 0 40px rgba(255,215,0,0.5)',
-            animation: 'textShimmer 3s linear infinite, textEntrance 0.8s ease-out',
-            fontFamily: '"Mountains of Christmas", cursive, serif',
-            marginBottom: '10px',
-            textAlign: 'center',
+            fontSize: "clamp(40px, 10vw, 70px)",
+            fontWeight: "900",
+            margin: "0",
+            color: "#FFFFFF",
+            letterSpacing: "2px",
+            textShadow: "0 0 20px rgba(255,255,255,0.3)",
           }}
         >
-          🎄 Merry Christmas 🎄
+          HAPPY <span style={{ color: "#FFC107" }}>NEW YEAR</span>
+        </h1>
+        
+        <div style={{
+          fontSize: "clamp(50px, 12vw, 90px)",
+          fontWeight: "900",
+          color: "#FFC107",
+          lineHeight: "0.8",
+          marginTop: "10px",
+          textShadow: "0 10px 30px rgba(255, 193, 7, 0.5)",
+          animation: "yearPop 1s ease-out 0.5s both"
+        }}>
+          2026
         </div>
 
-        {/* Happy Holidays */}
-        <div
+        {/* Oil Vibe Caption */}
+        <p
           style={{
-            fontSize: 'clamp(18px, 4vw, 28px)',
-            color: '#90caf9',
-            fontWeight: '600',
-            animation: 'fadeInUp 0.8s ease-out 0.3s both',
-            textShadow: '0 2px 20px rgba(144, 202, 249, 0.5)',
-            marginBottom: '20px',
-            fontFamily: '"Playfair Display", serif',
+            fontSize: "clamp(16px, 4vw, 22px)",
+            color: "#90caf9",
+            maxWidth: "600px",
+            margin: "25px 0",
+            fontWeight: "500",
+            fontStyle: "italic",
+            animation: "fadeInUp 2s ease-out",
           }}
         >
-          & Happy New Year 2026! 🎆
-        </div>
+          "Pure like Mustard, Healthy like Soybean... 🌿<br/>
+          May your 2026 be filled with Golden Blessings!"
+        </p>
 
-        {/* Decorative Divider */}
+        {/* Progress System */}
         <div
           style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '15px',
-            marginBottom: '20px',
-            animation: 'dividerSlide 0.8s ease-out 0.5s both',
-          }}
-        >
-          <span style={{ fontSize: '24px', animation: 'iconSpin 2s ease-in-out infinite' }}>🎁</span>
-          <div
-            style={{
-              width: '80px',
-              height: '3px',
-              background: 'linear-gradient(90deg, transparent, #ffd700, transparent)',
-              borderRadius: '2px',
-              animation: 'lineGlitter 1.5s ease-in-out infinite',
-            }}
-          />
-          <span style={{ fontSize: '24px', animation: 'iconSpin 2s ease-in-out infinite 0.5s' }}>⭐</span>
-          <div
-            style={{
-              width: '80px',
-              height: '3px',
-              background: 'linear-gradient(90deg, transparent, #ffd700, transparent)',
-              borderRadius: '2px',
-              animation: 'lineGlitter 1.5s ease-in-out infinite 0.5s',
-            }}
-          />
-          <span style={{ fontSize: '24px', animation: 'iconSpin 2s ease-in-out infinite 1s' }}>🎁</span>
-        </div>
-
-        {/* From Veer Bharat */}
-        <div
-          style={{
-            fontSize: 'clamp(20px, 5vw, 32px)',
-            fontWeight: 'bold',
-            background: 'linear-gradient(135deg, #ffd700, #ffeb3b, #ffd700)',
-            backgroundSize: '200% auto',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
-            animation: 'fadeInScale 0.8s ease-out 0.6s both, goldWave 3s ease infinite',
-            marginBottom: '15px',
-          }}
-        >
-          ✨ From Team Veer Bharat ✨
-        </div>
-
-        {/* Blessing Message */}
-        <div
-          style={{
-            fontSize: 'clamp(14px, 3vw, 18px)',
-            color: '#e0e0e0',
-            textAlign: 'center',
-            maxWidth: '500px',
-            lineHeight: 1.6,
-            animation: 'fadeInUp 0.8s ease-out 0.8s both',
-            padding: '0 20px',
-          }}
-        >
-          May this Christmas bring you joy, peace, love & warmth of the season! 🌟❄️🎅
-        </div>
-
-        {/* Special Gift Message */}
-        <div
-          style={{
-            fontSize: 'clamp(12px, 2.5vw, 16px)',
-            color: '#ffcc80',
-            textAlign: 'center',
-            marginTop: '15px',
-            animation: 'fadeInUp 0.8s ease-out 1s both',
-            fontStyle: 'italic',
-          }}
-        >
-          🫒 A gift of warmth & goodness from Santa! 🎁
-        </div>
-
-        {/* Progress Bar */}
-        <div
-          style={{
-            width: 'min(300px, 80vw)',
-            height: '12px',
-            background: 'rgba(255,255,255,0.15)',
-            borderRadius: '10px',
-            overflow: 'hidden',
-            marginTop: '30px',
-            animation: 'fadeInUp 0.8s ease-out 1.1s both',
-            border: '2px solid rgba(255,215,0,0.3)',
-            boxShadow: '0 0 20px rgba(255,215,0,0.2)',
+            width: "min(350px, 85vw)",
+            marginTop: "20px",
           }}
         >
           <div
             style={{
-              width: `${progress}%`,
-              height: '100%',
-              background: 'linear-gradient(90deg, #ff0000, #00ff00, #ff0000)',
-              backgroundSize: '200% auto',
-              borderRadius: '8px',
-              transition: 'width 0.1s ease-out',
-              animation: 'progressFlow 2s linear infinite',
-              boxShadow: '0 0 15px rgba(255,215,0,0.5)',
+              height: "6px",
+              background: "rgba(255,255,255,0.1)",
+              borderRadius: "10px",
+              overflow: "hidden",
+              border: "1px solid rgba(255,193,7,0.2)",
             }}
           >
             <div
               style={{
-                width: '30px',
-                height: '100%',
-                background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent)',
-                animation: 'progressGlide 1.5s ease-in-out infinite',
+                width: `${progress}%`,
+                height: "100%",
+                background: "linear-gradient(90deg, #FFC107, #FFD54F, #FFC107)",
+                transition: "width 0.2s ease-out",
+                boxShadow: "0 0 15px #FFC107",
               }}
             />
           </div>
-        </div>
-
-        {/* Loading Text */}
-        <div
-          style={{
-            marginTop: '15px',
-            fontSize: '16px',
-            color: '#81c784',
-            fontWeight: '600',
-            animation: 'textBlink 1s ease-in-out infinite, fadeInUp 0.8s ease-out 1.2s both',
-          }}
-        >
-          🎄 Spreading Christmas Joy... {Math.round(progress)}% 🎅
+          
+          <div style={{
+            marginTop: "12px",
+            fontSize: "14px",
+            color: "#FFC107",
+            fontWeight: "bold",
+            letterSpacing: "3px",
+            textTransform: "uppercase",
+            animation: "blink 1.5s infinite"
+          }}>
+            Igniting Success 2026 ... {Math.round(progress)}%
+          </div>
         </div>
       </div>
 
-      {/* CSS Animations */}
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&family=Playfair+Display:wght@400;600&display=swap');
-
-        @keyframes auroraWave {
-          0%, 100% { opacity: 0.5; transform: translateX(-5%); }
-          50% { opacity: 0.8; transform: translateX(5%); }
-        }
-
         @keyframes snowFall {
-          0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-          100% { transform: translateY(100vh) rotate(360deg); opacity: 0.3; }
+          0% { transform: translateY(-10vh) rotate(0deg); }
+          100% { transform: translateY(110vh) rotate(360deg); }
         }
 
-        @keyframes twinkle {
-          0%, 100% { opacity: 0.3; transform: scale(0.8); }
-          50% { opacity: 1; transform: scale(1.2); }
+        @keyframes pulseGlow {
+          0%, 100% { opacity: 0.3; transform: scale(1); }
+          50% { opacity: 0.6; transform: scale(1.1); }
         }
 
-        @keyframes treeGlow {
-          0%, 100% { filter: drop-shadow(0 0 20px rgba(0, 255, 0, 0.3)); }
-          50% { filter: drop-shadow(0 0 40px rgba(0, 255, 0, 0.6)); }
+        @keyframes fireworkExplode {
+          0%, 100% { transform: scale(0); opacity: 0; }
+          10% { transform: scale(1); opacity: 1; }
+          50% { transform: scale(20); opacity: 0; box-shadow: 0 0 10px 2px #FFC107, 20px -30px 0 white, -40px 20px 0 #FFC107; }
         }
 
-        @keyframes starGlow {
-          0%, 100% { transform: translateX(-50%) scale(1); filter: drop-shadow(0 0 20px #ffd700); }
-          50% { transform: translateX(-50%) scale(1.3); filter: drop-shadow(0 0 40px #ffd700); }
+        @keyframes mainReveal {
+          0% { opacity: 0; transform: translateY(30px) scale(0.9); }
+          100% { opacity: 1; transform: translateY(0) scale(1); }
         }
 
-        @keyframes ornamentGlow {
-          0%, 100% { transform: scale(1); }
-          50% { transform: scale(1.3); }
-        }
-
-        @keyframes presentBounce {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-10px); }
-        }
-
-        @keyframes santaFloat {
-          0%, 100% { transform: translateY(0) rotate(-5deg); }
-          50% { transform: translateY(-20px) rotate(5deg); }
-        }
-
-        @keyframes bubblePop {
-          0% { transform: scale(0); opacity: 0; }
-          50% { transform: scale(1.1); }
-          100% { transform: scale(1); opacity: 1; }
-        }
-
-        @keyframes giftFloat {
-          0%, 100% { transform: translateY(0) rotate(-10deg); }
-          50% { transform: translateY(-15px) rotate(10deg); }
-        }
-
-        @keyframes reindeerFly {
-          0% { transform: translateX(100vw); }
-          100% { transform: translateX(-100vw); }
-        }
-
-        @keyframes garlandSwing {
-          0%, 100% { transform: translateX(-50%) rotate(-2deg); }
-          50% { transform: translateX(-50%) rotate(2deg); }
-        }
-
-        @keyframes lightBlink {
-          0%, 100% { opacity: 1; transform: scale(1); }
-          50% { opacity: 0.5; transform: scale(0.9); }
-        }
-
-        @keyframes candySway {
-          0%, 100% { transform: rotate(15deg); }
-          50% { transform: rotate(-15deg); }
-        }
-
-        @keyframes contentZoomIn {
-          0% { opacity: 0; transform: scale(0.5) translateY(50px); }
-          100% { opacity: 1; transform: scale(1) translateY(0); }
-        }
-
-        @keyframes logoReveal {
-          0% { opacity: 0; transform: scale(0) rotate(-180deg); }
-          70% { transform: scale(1.1) rotate(10deg); }
-          100% { opacity: 1; transform: scale(1) rotate(0deg); }
-        }
-
-        @keyframes wreathGlow {
-          0%, 100% { box-shadow: 0 0 30px rgba(34, 139, 34, 0.5), inset 0 0 30px rgba(34, 139, 34, 0.3); }
-          50% { box-shadow: 0 0 50px rgba(34, 139, 34, 0.8), inset 0 0 50px rgba(34, 139, 34, 0.5); }
-        }
-
-        @keyframes berryPulse {
-          0%, 100% { transform: scale(1); }
-          50% { transform: scale(1.2); }
-        }
-
-        @keyframes auraPulse {
-          0%, 100% { transform: scale(1); opacity: 0.5; }
-          50% { transform: scale(1.3); opacity: 0.8; }
+        @keyframes logoEntrance {
+          0% { transform: scale(0) rotate(-180deg); opacity: 0; }
+          100% { transform: scale(1) rotate(0); opacity: 1; }
         }
 
         @keyframes logoFloat {
@@ -2233,76 +1724,20 @@ function ChristmasSplash({ duration = 4000 }) {
           50% { transform: translateY(-15px); }
         }
 
-        @keyframes hatWiggle {
-          0%, 100% { transform: translateX(-50%) rotate(-15deg); }
-          50% { transform: translateX(-50%) rotate(-5deg); }
-        }
-
-        @keyframes snowflakeRotate {
-          0% { 
-            transform: translate(-50%, -50%) rotate(0deg) translateY(-100px); 
-            opacity: 0; 
-          }
-          10%, 90% { opacity: 0.7; }
-          100% { 
-            transform: translate(-50%, -50%) rotate(360deg) translateY(-100px); 
-            opacity: 0; 
-          }
-        }
-
-        @keyframes textShimmer {
-          0%, 100% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-        }
-
-        @keyframes textEntrance {
-          0% { opacity: 0; transform: translateY(-50px) scale(0.8); }
-          100% { opacity: 1; transform: translateY(0) scale(1); }
-        }
-
-        @keyframes goldWave {
-          0%, 100% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-        }
-
-        @keyframes dividerSlide {
-          0% { opacity: 0; transform: scaleX(0); }
-          100% { opacity: 1; transform: scaleX(1); }
-        }
-
-        @keyframes iconSpin {
-          0%, 100% { transform: rotate(0deg) scale(1); }
-          50% { transform: rotate(15deg) scale(1.2); }
-        }
-
-        @keyframes lineGlitter {
-          0%, 100% { box-shadow: 0 0 15px rgba(255, 215, 0, 0.5); }
-          50% { box-shadow: 0 0 30px rgba(255, 215, 0, 0.9); }
-        }
-
-        @keyframes fadeInScale {
-          0% { opacity: 0; transform: scale(0.7) translateY(30px); }
-          100% { opacity: 1; transform: scale(1) translateY(0); }
+        @keyframes yearPop {
+          0% { opacity: 0; transform: scale(0.5); }
+          70% { transform: scale(1.1); }
+          100% { opacity: 1; transform: scale(1); }
         }
 
         @keyframes fadeInUp {
-          0% { opacity: 0; transform: translateY(30px); }
+          0% { opacity: 0; transform: translateY(20px); }
           100% { opacity: 1; transform: translateY(0); }
         }
 
-        @keyframes progressFlow {
-          0%, 100% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-        }
-
-        @keyframes progressGlide {
-          0% { transform: translateX(-100%); }
-          100% { transform: translateX(300%); }
-        }
-
-        @keyframes textBlink {
+        @keyframes blink {
           0%, 100% { opacity: 1; }
-          50% { opacity: 0.7; }
+          50% { opacity: 0.4; }
         }
       `}</style>
     </div>

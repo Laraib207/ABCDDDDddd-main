@@ -39,11 +39,12 @@ export default function Contact() {
     {
       icon: <FiMapPin className="w-6 h-6" />,
       title: 'Our Location',
-      details: 'Office No 731, IT Home Tower B',
+      details: ' Ithom Tower B sector 62',
       subDetails: 'Sector 62, Electronic Metro Station',
       location: 'Noida, Uttar Pradesh',
       color: 'from-yellow-200 to-yellow-300',
-      href: 'https://maps.google.com/?q=Noida+Sector+62'
+      // href: 'https://maps.google.com/?q=Noida+Sector+62'
+      href: 'https://share.google/IlONR7iL9kw8AzDoX'
     },
     {
       icon: <FiPhone className="w-6 h-6" />,
@@ -249,16 +250,19 @@ export default function Contact() {
 
             {/* Map */}
             <div className="bg-white/80 backdrop-blur-xl rounded-2xl p-2 shadow-lg border-2 border-white/50 overflow-hidden">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.067938973857!2d77.36788431508!3d28.627090982422!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce5456ef36d9f%3A0x3b7191b1286136c8!2sSector%2062%2C%20Noida!5e0!3m2!1sen!2sin!4v1234567890"
-                width="100%"
-                height="280"
-                style={{ border: 0, borderRadius: '12px' }}
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="rounded-xl"
-              />
+            
+{/* Google Maps Embed Code for ITHUM TOWER */}
+<iframe 
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.43851558299!2d77.370186875334!3d28.626568!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce550adec536d%3A0xfc9a748d99d8bd07!2sITHUM%20TOWER!5e0!3m2!1sen!2sin!4v1704700000000!5m2!1sen!2sin" 
+  width="600" 
+  height="450" 
+  style={{ border: 0 }} 
+  allowFullScreen={true} 
+  loading="lazy" 
+  referrerPolicy="no-referrer-when-downgrade"
+></iframe>
+
+
             </div>
           </div>
         </div>
