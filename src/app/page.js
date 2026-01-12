@@ -1199,7 +1199,7 @@
 "use client";
 import Hero2 from "@/components/CategoryCarousel";
 import CustomerFeedback from "@/components/CustomerFeedback";
-// import VeerBharatHero from "@/components/VeerBharatHero";
+import VeerBharatHero from "@/components/VeerBharatHero";
 import WhyUsSection from "@/components/WhyUsSection";
 import { motion } from "framer-motion";
 import { Playfair_Display, Poppins } from "next/font/google";
@@ -1236,7 +1236,14 @@ export default function Home() {
   return (
     <main className={`${poppins.className} bg-[#fef9c3] text-[#0b0d11]`}>
       {/* Video Hero - AUTO-SLIDE FEATURE */}
-      <VideoHero videos={["/images/hero-video.mp4", "/images/hero-video.mp4"]} />
+      <VideoHero
+        videos={[
+          "/images/hero2-video.mp4", // FIRST PLAY
+          "/images/hero-video.mp4",  // PLAY AFTER FIRST COMPLETES
+        ]}
+      />
+   
+
 
       {/* Full Screen Word-by-Word Hero Section */}
       <div className="relative py-8 md:py-10 overflow-hidden bg-gradient-to-b from-white via-amber-50/30 to-gray-50/50">
