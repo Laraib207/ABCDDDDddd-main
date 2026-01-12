@@ -1404,7 +1404,7 @@ export default function Home() {
         href="https://wa.me/9266328444"
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed right-5 bottom-5 z-50 flex items-center justify-center w-14 h-14 rounded-full bg-green-500 shadow-lg text-white hover:scale-105 transition"
+        className="fixed right-5 bottom-5 z-100 flex items-center justify-center w-14 h-14 rounded-full bg-green-500 shadow-lg text-white hover:scale-105 transition"
         aria-label="WhatsApp"
       >
         <FaWhatsapp className="w-6 h-6" />

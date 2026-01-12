@@ -1416,330 +1416,330 @@
 
 
 
-"use client";
+// "use client";
 
-import { createContext, useContext, useCallback, useRef, useState, useEffect } from "react";
-import { usePathname } from "next/navigation";
-import Image from "next/image";
+// import { createContext, useContext, useCallback, useRef, useState, useEffect } from "react";
+// import { usePathname } from "next/navigation";
+// import Image from "next/image";
 
-const SplashContext = createContext();
+// const SplashContext = createContext();
 
-export function useSplash() {
-  return useContext(SplashContext);
-}
+// export function useSplash() {
+//   return useContext(SplashContext);
+// }
 
-export default function SplashProvider({ children }) {
-  const [visible, setVisible] = useState(false);
-  const [mounted, setMounted] = useState(false);
-  const resolveRef = useRef(null);
-  const timeoutRef = useRef(null);
-  const pathname = usePathname();
+// export default function SplashProvider({ children }) {
+//   const [visible, setVisible] = useState(false);
+//   const [mounted, setMounted] = useState(false);
+//   const resolveRef = useRef(null);
+//   const timeoutRef = useRef(null);
+//   const pathname = usePathname();
 
-  const DURATION = 4500; // 4.5 seconds for a premium feel
+//   const DURATION = 4500; // 4.5 seconds for a premium feel
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+//   useEffect(() => {
+//     setMounted(true);
+//   }, []);
 
-  useEffect(() => {
-    if (!mounted) return;
+//   useEffect(() => {
+//     if (!mounted) return;
 
-    const isHomePage = pathname === "/";
-    if (typeof window !== "undefined" && isHomePage) {
-      const splashData = JSON.parse(window.sessionStorage.getItem("splashShown") || "{}");
-      const today = new Date().toDateString();
+//     const isHomePage = pathname === "/";
+//     if (typeof window !== "undefined" && isHomePage) {
+//       const splashData = JSON.parse(window.sessionStorage.getItem("splashShown") || "{}");
+//       const today = new Date().toDateString();
 
-      if (splashData.date !== today) {
-        setVisible(true);
-        window.sessionStorage.setItem("splashShown", JSON.stringify({ date: today }));
+//       if (splashData.date !== today) {
+//         setVisible(true);
+//         window.sessionStorage.setItem("splashShown", JSON.stringify({ date: today }));
 
-        timeoutRef.current = setTimeout(() => {
-          setVisible(false);
-        }, DURATION);
-      }
-    }
-  }, [mounted, pathname]);
+//         timeoutRef.current = setTimeout(() => {
+//           setVisible(false);
+//         }, DURATION);
+//       }
+//     }
+//   }, [mounted, pathname]);
 
-  const show = useCallback((ms = DURATION) => {
-    setVisible(true);
-    return new Promise((resolve) => {
-      resolveRef.current = resolve;
-      clearTimeout(timeoutRef.current);
-      timeoutRef.current = setTimeout(() => {
-        if (resolveRef.current) {
-          resolveRef.current();
-          resolveRef.current = null;
-          setVisible(false);
-        }
-      }, ms);
-    });
-  }, []);
+//   const show = useCallback((ms = DURATION) => {
+//     setVisible(true);
+//     return new Promise((resolve) => {
+//       resolveRef.current = resolve;
+//       clearTimeout(timeoutRef.current);
+//       timeoutRef.current = setTimeout(() => {
+//         if (resolveRef.current) {
+//           resolveRef.current();
+//           resolveRef.current = null;
+//           setVisible(false);
+//         }
+//       }, ms);
+//     });
+//   }, []);
 
-  const hideNow = useCallback(() => {
-    if (resolveRef.current) {
-      resolveRef.current();
-      resolveRef.current = null;
-    }
-    clearTimeout(timeoutRef.current);
-    setVisible(false);
-  }, []);
+//   const hideNow = useCallback(() => {
+//     if (resolveRef.current) {
+//       resolveRef.current();
+//       resolveRef.current = null;
+//     }
+//     clearTimeout(timeoutRef.current);
+//     setVisible(false);
+//   }, []);
 
-  useEffect(() => {
-    return () => clearTimeout(timeoutRef.current);
-  }, []);
+//   useEffect(() => {
+//     return () => clearTimeout(timeoutRef.current);
+//   }, []);
 
-  if (!mounted) return null;
+//   if (!mounted) return null;
 
-  return (
-    <SplashContext.Provider value={{ show, hideNow, visible }}>
-      {visible && <NewYearSplash duration={DURATION} />}
-      <div style={{ visibility: visible ? "hidden" : "visible" }}>{children}</div>
-    </SplashContext.Provider>
-  );
-}
+//   return (
+//     <SplashContext.Provider value={{ show, hideNow, visible }}>
+//       {visible && <NewYearSplash duration={DURATION} />}
+//       <div style={{ visibility: visible ? "hidden" : "visible" }}>{children}</div>
+//     </SplashContext.Provider>
+//   );
+// }
 
-function NewYearSplash({ duration = 4500 }) {
-  const [progress, setProgress] = useState(0);
+// function NewYearSplash({ duration = 4500 }) {
+//   const [progress, setProgress] = useState(0);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(interval);
-          return 100;
-        }
-        return prev + 2;
-      });
-    }, duration / 50);
+//   useEffect(() => {
+//     const interval = setInterval(() => {
+//       setProgress((prev) => {
+//         if (prev >= 100) {
+//           clearInterval(interval);
+//           return 100;
+//         }
+//         return prev + 2;
+//       });
+//     }, duration / 50);
 
-    return () => clearInterval(interval);
-  }, [duration]);
+//     return () => clearInterval(interval);
+//   }, [duration]);
 
-  return (
-    <div
-      style={{
-        position: "fixed",
-        inset: 0,
-        zIndex: 9999,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        // Luxurious Deep Blue & Golden Mustard Gradient
-        background: "radial-gradient(circle at center, #1a237e 0%, #0c1445 60%, #050a24 100%)",
-        overflow: "hidden",
-        fontFamily: "'Inter', sans-serif",
-      }}
-    >
-      {/* Golden Mustard Glow (Vibe of Mustard/Soybean Oil) */}
-      <div style={{
-        position: 'absolute',
-        width: '100%',
-        height: '100%',
-        background: 'radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.1) 0%, transparent 70%)',
-        animation: 'pulseGlow 4s ease-in-out infinite'
-      }} />
+//   return (
+//     <div
+//       style={{
+//         position: "fixed",
+//         inset: 0,
+//         zIndex: 9999,
+//         display: "flex",
+//         alignItems: "center",
+//         justifyContent: "center",
+//         // Luxurious Deep Blue & Golden Mustard Gradient
+//         background: "radial-gradient(circle at center, #1a237e 0%, #0c1445 60%, #050a24 100%)",
+//         overflow: "hidden",
+//         fontFamily: "'Inter', sans-serif",
+//       }}
+//     >
+//       {/* Golden Mustard Glow (Vibe of Mustard/Soybean Oil) */}
+//       <div style={{
+//         position: 'absolute',
+//         width: '100%',
+//         height: '100%',
+//         background: 'radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.1) 0%, transparent 70%)',
+//         animation: 'pulseGlow 4s ease-in-out infinite'
+//       }} />
 
-      {/* Snowfall / Winter Frequency */}
-      {[...Array(50)].map((_, i) => (
-        <div
-          key={`snow-${i}`}
-          style={{
-            position: "absolute",
-            width: `${Math.random() * 5 + 2}px`,
-            height: `${Math.random() * 5 + 2}px`,
-            background: "white",
-            borderRadius: "50%",
-            left: `${Math.random() * 100}%`,
-            top: `-${Math.random() * 20}%`,
-            animation: `snowFall ${Math.random() * 4 + 4}s linear infinite`,
-            animationDelay: `${Math.random() * 5}s`,
-            opacity: Math.random() * 0.8,
-            filter: "blur(1px)",
-          }}
-        />
-      ))}
+//       {/* Snowfall / Winter Frequency */}
+//       {[...Array(50)].map((_, i) => (
+//         <div
+//           key={`snow-${i}`}
+//           style={{
+//             position: "absolute",
+//             width: `${Math.random() * 5 + 2}px`,
+//             height: `${Math.random() * 5 + 2}px`,
+//             background: "white",
+//             borderRadius: "50%",
+//             left: `${Math.random() * 100}%`,
+//             top: `-${Math.random() * 20}%`,
+//             animation: `snowFall ${Math.random() * 4 + 4}s linear infinite`,
+//             animationDelay: `${Math.random() * 5}s`,
+//             opacity: Math.random() * 0.8,
+//             filter: "blur(1px)",
+//           }}
+//         />
+//       ))}
 
-      {/* Background Fireworks */}
-      {[...Array(8)].map((_, i) => (
-        <div
-          key={`firework-${i}`}
-          style={{
-            position: "absolute",
-            left: `${Math.random() * 90 + 5}%`,
-            top: `${Math.random() * 60 + 5}%`,
-            width: '4px',
-            height: '4px',
-            background: 'transparent',
-            boxShadow: '0 0 0 0 white',
-            animation: `fireworkExplode ${3 + Math.random() * 2}s ease-out infinite`,
-            animationDelay: `${i * 0.5}s`,
-          }}
-        />
-      ))}
+//       {/* Background Fireworks */}
+//       {[...Array(8)].map((_, i) => (
+//         <div
+//           key={`firework-${i}`}
+//           style={{
+//             position: "absolute",
+//             left: `${Math.random() * 90 + 5}%`,
+//             top: `${Math.random() * 60 + 5}%`,
+//             width: '4px',
+//             height: '4px',
+//             background: 'transparent',
+//             boxShadow: '0 0 0 0 white',
+//             animation: `fireworkExplode ${3 + Math.random() * 2}s ease-out infinite`,
+//             animationDelay: `${i * 0.5}s`,
+//           }}
+//         />
+//       ))}
 
-      {/* Main Content Container */}
-      <div
-        style={{
-          position: "relative",
-          zIndex: 10,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          textAlign: "center",
-          padding: "0 20px",
-          animation: "mainReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1)",
-        }}
-      >
-        {/* Logo with Oil-Gold Border */}
-        <div
-          style={{
-            width: "140px",
-            height: "140px",
-            borderRadius: "50%",
-            background: "white",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            boxShadow: "0 20px 50px rgba(0,0,0,0.5), 0 0 30px rgba(255, 193, 7, 0.4)",
-            border: "5px solid #FFC107", // Mustard Golden Vibe
-            marginBottom: "30px",
-            animation: "logoEntrance 1.5s ease-out, logoFloat 4s ease-in-out infinite",
-          }}
-        >
-          <Image src="/logo.png" alt="LaraibdTec Logo" width={100} height={100} />
-        </div>
+//       {/* Main Content Container */}
+//       <div
+//         style={{
+//           position: "relative",
+//           zIndex: 10,
+//           display: "flex",
+//           flexDirection: "column",
+//           alignItems: "center",
+//           textAlign: "center",
+//           padding: "0 20px",
+//           animation: "mainReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1)",
+//         }}
+//       >
+//         {/* Logo with Oil-Gold Border */}
+//         <div
+//           style={{
+//             width: "140px",
+//             height: "140px",
+//             borderRadius: "50%",
+//             background: "white",
+//             display: "flex",
+//             alignItems: "center",
+//             justifyContent: "center",
+//             boxShadow: "0 20px 50px rgba(0,0,0,0.5), 0 0 30px rgba(255, 193, 7, 0.4)",
+//             border: "5px solid #FFC107", // Mustard Golden Vibe
+//             marginBottom: "30px",
+//             animation: "logoEntrance 1.5s ease-out, logoFloat 4s ease-in-out infinite",
+//           }}
+//         >
+//           <Image src="/logo.png" alt="LaraibdTec Logo" width={100} height={100} />
+//         </div>
 
-        {/* Happy New Year Title */}
-        <h1
-          style={{
-            fontSize: "clamp(40px, 10vw, 70px)",
-            fontWeight: "900",
-            margin: "0",
-            color: "#FFFFFF",
-            letterSpacing: "2px",
-            textShadow: "0 0 20px rgba(255,255,255,0.3)",
-          }}
-        >
-          HAPPY <span style={{ color: "#FFC107" }}>NEW YEAR</span>
-        </h1>
+//         {/* Happy New Year Title */}
+//         <h1
+//           style={{
+//             fontSize: "clamp(40px, 10vw, 70px)",
+//             fontWeight: "900",
+//             margin: "0",
+//             color: "#FFFFFF",
+//             letterSpacing: "2px",
+//             textShadow: "0 0 20px rgba(255,255,255,0.3)",
+//           }}
+//         >
+//           HAPPY <span style={{ color: "#FFC107" }}>NEW YEAR</span>
+//         </h1>
         
-        <div style={{
-          fontSize: "clamp(50px, 12vw, 90px)",
-          fontWeight: "900",
-          color: "#FFC107",
-          lineHeight: "0.8",
-          marginTop: "10px",
-          textShadow: "0 10px 30px rgba(255, 193, 7, 0.5)",
-          animation: "yearPop 1s ease-out 0.5s both"
-        }}>
-          2026
-        </div>
+//         <div style={{
+//           fontSize: "clamp(50px, 12vw, 90px)",
+//           fontWeight: "900",
+//           color: "#FFC107",
+//           lineHeight: "0.8",
+//           marginTop: "10px",
+//           textShadow: "0 10px 30px rgba(255, 193, 7, 0.5)",
+//           animation: "yearPop 1s ease-out 0.5s both"
+//         }}>
+//           2026
+//         </div>
 
-        {/* Oil Vibe Caption */}
-        <p
-          style={{
-            fontSize: "clamp(16px, 4vw, 22px)",
-            color: "#90caf9",
-            maxWidth: "600px",
-            margin: "25px 0",
-            fontWeight: "500",
-            fontStyle: "italic",
-            animation: "fadeInUp 2s ease-out",
-          }}
-        >
-          "Pure like Mustard, Healthy like Soybean... 🌿<br/>
-          May your 2026 be filled with Golden Blessings!"
-        </p>
+//         {/* Oil Vibe Caption */}
+//         <p
+//           style={{
+//             fontSize: "clamp(16px, 4vw, 22px)",
+//             color: "#90caf9",
+//             maxWidth: "600px",
+//             margin: "25px 0",
+//             fontWeight: "500",
+//             fontStyle: "italic",
+//             animation: "fadeInUp 2s ease-out",
+//           }}
+//         >
+//           "Pure like Mustard, Healthy like Soybean... 🌿<br/>
+//           May your 2026 be filled with Golden Blessings!"
+//         </p>
 
-        {/* Progress System */}
-        <div
-          style={{
-            width: "min(350px, 85vw)",
-            marginTop: "20px",
-          }}
-        >
-          <div
-            style={{
-              height: "6px",
-              background: "rgba(255,255,255,0.1)",
-              borderRadius: "10px",
-              overflow: "hidden",
-              border: "1px solid rgba(255,193,7,0.2)",
-            }}
-          >
-            <div
-              style={{
-                width: `${progress}%`,
-                height: "100%",
-                background: "linear-gradient(90deg, #FFC107, #FFD54F, #FFC107)",
-                transition: "width 0.2s ease-out",
-                boxShadow: "0 0 15px #FFC107",
-              }}
-            />
-          </div>
+//         {/* Progress System */}
+//         <div
+//           style={{
+//             width: "min(350px, 85vw)",
+//             marginTop: "20px",
+//           }}
+//         >
+//           <div
+//             style={{
+//               height: "6px",
+//               background: "rgba(255,255,255,0.1)",
+//               borderRadius: "10px",
+//               overflow: "hidden",
+//               border: "1px solid rgba(255,193,7,0.2)",
+//             }}
+//           >
+//             <div
+//               style={{
+//                 width: `${progress}%`,
+//                 height: "100%",
+//                 background: "linear-gradient(90deg, #FFC107, #FFD54F, #FFC107)",
+//                 transition: "width 0.2s ease-out",
+//                 boxShadow: "0 0 15px #FFC107",
+//               }}
+//             />
+//           </div>
           
-          <div style={{
-            marginTop: "12px",
-            fontSize: "14px",
-            color: "#FFC107",
-            fontWeight: "bold",
-            letterSpacing: "3px",
-            textTransform: "uppercase",
-            animation: "blink 1.5s infinite"
-          }}>
-            Igniting Success 2026 ... {Math.round(progress)}%
-          </div>
-        </div>
-      </div>
+//           <div style={{
+//             marginTop: "12px",
+//             fontSize: "14px",
+//             color: "#FFC107",
+//             fontWeight: "bold",
+//             letterSpacing: "3px",
+//             textTransform: "uppercase",
+//             animation: "blink 1.5s infinite"
+//           }}>
+//             Igniting Success 2026 ... {Math.round(progress)}%
+//           </div>
+//         </div>
+//       </div>
 
-      <style>{`
-        @keyframes snowFall {
-          0% { transform: translateY(-10vh) rotate(0deg); }
-          100% { transform: translateY(110vh) rotate(360deg); }
-        }
+//       <style>{`
+//         @keyframes snowFall {
+//           0% { transform: translateY(-10vh) rotate(0deg); }
+//           100% { transform: translateY(110vh) rotate(360deg); }
+//         }
 
-        @keyframes pulseGlow {
-          0%, 100% { opacity: 0.3; transform: scale(1); }
-          50% { opacity: 0.6; transform: scale(1.1); }
-        }
+//         @keyframes pulseGlow {
+//           0%, 100% { opacity: 0.3; transform: scale(1); }
+//           50% { opacity: 0.6; transform: scale(1.1); }
+//         }
 
-        @keyframes fireworkExplode {
-          0%, 100% { transform: scale(0); opacity: 0; }
-          10% { transform: scale(1); opacity: 1; }
-          50% { transform: scale(20); opacity: 0; box-shadow: 0 0 10px 2px #FFC107, 20px -30px 0 white, -40px 20px 0 #FFC107; }
-        }
+//         @keyframes fireworkExplode {
+//           0%, 100% { transform: scale(0); opacity: 0; }
+//           10% { transform: scale(1); opacity: 1; }
+//           50% { transform: scale(20); opacity: 0; box-shadow: 0 0 10px 2px #FFC107, 20px -30px 0 white, -40px 20px 0 #FFC107; }
+//         }
 
-        @keyframes mainReveal {
-          0% { opacity: 0; transform: translateY(30px) scale(0.9); }
-          100% { opacity: 1; transform: translateY(0) scale(1); }
-        }
+//         @keyframes mainReveal {
+//           0% { opacity: 0; transform: translateY(30px) scale(0.9); }
+//           100% { opacity: 1; transform: translateY(0) scale(1); }
+//         }
 
-        @keyframes logoEntrance {
-          0% { transform: scale(0) rotate(-180deg); opacity: 0; }
-          100% { transform: scale(1) rotate(0); opacity: 1; }
-        }
+//         @keyframes logoEntrance {
+//           0% { transform: scale(0) rotate(-180deg); opacity: 0; }
+//           100% { transform: scale(1) rotate(0); opacity: 1; }
+//         }
 
-        @keyframes logoFloat {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-15px); }
-        }
+//         @keyframes logoFloat {
+//           0%, 100% { transform: translateY(0); }
+//           50% { transform: translateY(-15px); }
+//         }
 
-        @keyframes yearPop {
-          0% { opacity: 0; transform: scale(0.5); }
-          70% { transform: scale(1.1); }
-          100% { opacity: 1; transform: scale(1); }
-        }
+//         @keyframes yearPop {
+//           0% { opacity: 0; transform: scale(0.5); }
+//           70% { transform: scale(1.1); }
+//           100% { opacity: 1; transform: scale(1); }
+//         }
 
-        @keyframes fadeInUp {
-          0% { opacity: 0; transform: translateY(20px); }
-          100% { opacity: 1; transform: translateY(0); }
-        }
+//         @keyframes fadeInUp {
+//           0% { opacity: 0; transform: translateY(20px); }
+//           100% { opacity: 1; transform: translateY(0); }
+//         }
 
-        @keyframes blink {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0.4; }
-        }
-      `}</style>
-    </div>
-  );
-}
+//         @keyframes blink {
+//           0%, 100% { opacity: 1; }
+//           50% { opacity: 0.4; }
+//         }
+//       `}</style>
+//     </div>
+//   );
+// }

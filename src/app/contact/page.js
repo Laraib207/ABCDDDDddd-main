@@ -39,7 +39,7 @@ export default function Contact() {
     {
       icon: <FiMapPin className="w-6 h-6" />,
       title: 'Our Location',
-      details: ' Ithom Tower B sector 62',
+      details: ' Ithum Tower B sector 62',
       subDetails: 'Sector 62, Electronic Metro Station',
       location: 'Noida, Uttar Pradesh',
       color: 'from-yellow-200 to-yellow-300',
@@ -49,11 +49,11 @@ export default function Contact() {
     {
       icon: <FiPhone className="w-6 h-6" />,
       title: 'Call Us',
-      details: '+91 123 456 7890',
+      details: '+91 91 9266328444 ',
       subDetails: 'Mon - Sat (9:00 AM - 6:00 PM)',
       location: '',
       color: 'from-purple-200 to-purple-300',
-      href: 'tel:+911234567890'
+      href: 'tel:+91 9266328444'
     },
     {
       icon: <FiMail className="w-6 h-6" />,
@@ -136,7 +136,7 @@ export default function Contact() {
                           name="phone"
                           required
                           className="w-full px-4 py-3 rounded-xl bg-gradient-to-r from-[#fef9c3]/30 to-[#DFC6F6]/30 border-2 border-gray-200 focus:border-red-500 focus:outline-none transition-all duration-300 text-gray-900 placeholder-gray-500"
-                          placeholder="+91 1234567890"
+                          placeholder="+91 9266328444"
                         />
                       </div>
                     </div>
@@ -275,7 +275,7 @@ export default function Contact() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a
-              href="tel:+911234567890"
+              href="+91 9266328444"
               className="px-8 py-4 rounded-xl bg-white text-red-600 font-bold hover:bg-gray-100 transition-all duration-300 hover:scale-105 shadow-lg"
             >
               Call Us Now
