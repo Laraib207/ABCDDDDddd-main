@@ -1198,7 +1198,7 @@
 
 "use client";
 import Hero2 from "@/components/CategoryCarousel";
-import CustomerFeedback from "@/components/CustomerFeedback";
+import CustomerFeedback from "@/app/CustomerFeedback";
 import VeerBharatHero from "@/components/VeerBharatHero";
 import WhyUsSection from "@/components/WhyUsSection";
 import { motion } from "framer-motion";

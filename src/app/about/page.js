@@ -613,7 +613,7 @@ export default function AboutPage() {
               <div className="relative h-80 overflow-hidden bg-gradient-to-br from-slate-100 to-slate-200">
                 {/* REPLACE WITH EXECUTIVE DIRECTOR IMAGE */}
                 <Image
-                  src="/images/TahirBhai.jpeg"
+                  // src="/images/TahirBhai.jpeg"
                   alt="Executive Director photo"
                   width={800}
                   height={1000}
@@ -626,13 +626,13 @@ export default function AboutPage() {
               
               <div className="p-8 text-center">
                 <div className="text-sm font-bold text-red-600 uppercase tracking-wider mb-2">
-                   SEO Expert
+                   ASM (Area Sales Manager)
                 </div>
                 <h3 className="text-2xl font-black text-slate-900 mb-3">
-                  Mr.Tahir
+                  {/* Mr.Tahir */}
                 </h3>
                 <p className="text-slate-600 leading-relaxed">
-                  Visionary leader with decades of experience in the edible oil industry
+                  {/* Visionary leader with decades of experience in the edible oil industry */}
                 </p>
               </div>
             </motion.div>

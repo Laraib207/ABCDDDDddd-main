@@ -408,21 +408,21 @@ export default function Team() {
         { label: "Stars", value: "150+" }
       ]
     },
-    {
-      name: "Tahir",
-      role: "Digital Marketing & SEO Expert",
-      image: "/images/TahirBhai.jpeg",
-      description: "Digital growth wizard with SEO mastery, driving massive traffic and conversions through data-driven strategies and cutting-edge marketing automation.",
-      achievements: ["SEO Mastery", "5+ Years Exp", "Google Partner", "Conversion Expert"],
-      social: {
-        linkedin: "https://linkedin.com",
-        twitter: "https://twitter.com",
-        email: "mailto:kailash@company.com"
-      },
-      position: "right",
-      gradient: "from-orange-500 via-red-500 to-yellow-500",
-      particles: "orange"
-    },
+    // {
+    //   name: "Tahir",
+    //   role: "Digital Marketing & SEO Expert",
+    //   image: "/images/TahirBhai.jpeg",
+    //   description: "Digital growth wizard with SEO mastery, driving massive traffic and conversions through data-driven strategies and cutting-edge marketing automation.",
+    //   achievements: ["SEO Mastery", "5+ Years Exp", "Google Partner", "Conversion Expert"],
+    //   social: {
+    //     linkedin: "https://linkedin.com",
+    //     twitter: "https://twitter.com",
+    //     email: "mailto:kailash@company.com"
+    //   },
+    //   position: "right",
+    //   gradient: "from-orange-500 via-red-500 to-yellow-500",
+    //   particles: "orange"
+    // },
   ];
 
   const toggleExpand = (index) => {
