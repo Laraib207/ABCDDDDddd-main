@@ -1466,7 +1466,7 @@ export default function Navbar() {
                       <a href="/gallery" className="dropdown-item-classical px-5 py-3" onClick={() => setTeamOpen(false)}>Gallery</a>
                       <a href="/Managing-Director" className="dropdown-item-classical px-5 py-3" onClick={() => setTeamOpen(false)}>Managing Director</a>
                       {/* ✅ NEW: Other Branch */}
-                      <a href="/other-branch" className="dropdown-item-classical px-5 py-3" onClick={() => setTeamOpen(false)}>Other Branch</a>
+                      <a href="https://69b13f17317825bd0bd9c901--candid-taffy-bfb081.netlify.app/verify" className="dropdown-item-classical px-5 py-3" onClick={() => setTeamOpen(false)}>Other Branch</a>
                     </div>
                   </div>
                 )}
