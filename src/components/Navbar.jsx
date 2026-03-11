@@ -892,6 +892,12 @@
 
 
 
+
+
+
+
+
+
 "use client";
 
 import { useState, useEffect, useRef } from "react";
@@ -1238,6 +1244,7 @@ export default function Navbar() {
           flex-shrink: 0;
         }
 
+        /* ✅ FIX: Always sticky with shadow */
         .scrolled-shadow {
           box-shadow:
             0 4px 30px rgba(10,22,40,0.12),
@@ -1275,11 +1282,12 @@ export default function Navbar() {
         }
       `}</style>
 
+      {/* ✅ FIX: Always fixed/sticky at top — removed conditional relative/fixed logic */}
       <header
-        className={`w-full transition-all duration-400 header-bg ${
-          scrolled ? "fixed top-0 left-0 z-50 scrolled-shadow" : "relative"
-        }`}
-      >
+  className={`w-full transition-all duration-400 header-bg fixed top-0 left-0 right-0 z-50 ${
+    scrolled ? "scrolled-shadow" : ""
+  }`}
+>
         {/* Top ornament */}
         <div className="header-border-ornament" />
 
@@ -1435,7 +1443,7 @@ export default function Navbar() {
                 )}
               </li>
 
-              {/* Team dropdown */}
+              {/* ✅ Team dropdown — with "Other Branch" added */}
               <li className="relative" ref={teamRef}>
                 <button
                   ref={teamButtonRef}
@@ -1457,6 +1465,8 @@ export default function Navbar() {
                       <a href="/team" className="dropdown-item-classical px-5 py-3" onClick={() => setTeamOpen(false)}>Our Team</a>
                       <a href="/gallery" className="dropdown-item-classical px-5 py-3" onClick={() => setTeamOpen(false)}>Gallery</a>
                       <a href="/Managing-Director" className="dropdown-item-classical px-5 py-3" onClick={() => setTeamOpen(false)}>Managing Director</a>
+                      {/* ✅ NEW: Other Branch */}
+                      <a href="/other-branch" className="dropdown-item-classical px-5 py-3" onClick={() => setTeamOpen(false)}>Other Branch</a>
                     </div>
                   </div>
                 )}
@@ -1491,10 +1501,10 @@ export default function Navbar() {
         {/* Bottom ornament */}
         <div className="header-border-ornament" />
 
-        {/* Mobile Slide Menu */}
+        {/* ✅ FIX: Mobile Slide Menu — top offset simplified since header is always sticky */}
         <div
           className={`md:hidden fixed inset-0 z-40 transition-all duration-500 ${open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
-          style={{ top: scrolled ? '130px' : '185px' }}
+          style={{ top: '0px' }}
         >
           <div
             style={{ position: 'absolute', inset: 0, background: 'rgba(10,22,40,0.65)', backdropFilter: 'blur(6px)' }}
@@ -1580,7 +1590,7 @@ export default function Navbar() {
                 </div>
               </details>
 
-              {/* Team */}
+              {/* ✅ Team — with "Other Branch" added in mobile too */}
               <details style={{ marginBottom: '4px' }}>
                 <summary className="details-summary-classical">
                   <span style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
@@ -1593,6 +1603,8 @@ export default function Navbar() {
                   <a href="/team" className="mobile-sub-link" onClick={() => setOpen(false)}>Our Team</a>
                   <a href="/gallery" className="mobile-sub-link" onClick={() => setOpen(false)}>Gallery</a>
                   <a href="/Managing-Director" className="mobile-sub-link" onClick={() => setOpen(false)}>Managing Director</a>
+                  {/* ✅ NEW: Other Branch */}
+                  <a href="/other-branch" className="mobile-sub-link" onClick={() => setOpen(false)}>Other Branch</a>
                 </div>
               </details>
 
@@ -1624,6 +1636,7 @@ export default function Navbar() {
           </div>
         </div>
       </header>
+      
 
       {/* Brochure Modal */}
       {viewerOpen && (
@@ -1735,6 +1748,12 @@ function ChevronIcon({ open }) {
     </svg>
   );
 }
+
+
+
+
+
+
 
 
 // "use client";
