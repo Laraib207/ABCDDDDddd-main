@@ -805,8 +805,8 @@ export default function PalmOilPage() {
             >
               {/* Popular Badge */}
               {product.popular && (
-                <div className="absolute top-4 right-4 z-10 px-4 py-2 rounded-full bg-gradient-to-r from-red-500 to-pink-500 text-white text-sm font-bold shadow-lg">
-                  🔥 Best Seller
+                <div className="absolute top-4 right-4 z-10 px-4 py-2 rounded-full bg-gradient-to-r from-[#8B2A3F] to-[#6E1F31] text-white text-sm font-bold shadow-lg">
+                  ★ Best Seller
                 </div>
               )}
 

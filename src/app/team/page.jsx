@@ -385,7 +385,7 @@ export default function Team() {
         email: "mailto:chandrashekar@company.com"
       },
       position: "left",
-      gradient: "from-rose-500 via-pink-500 to-purple-600",
+      gradient: "from-[#B7892D] via-[#C9A33B] to-[#8B2A3F]",
       particles: "rose"
     },
     {
@@ -400,7 +400,7 @@ export default function Team() {
         email: "mailto:laraibsiddiqui10ki@gmail.com"
       },
       position: "center",
-      gradient: "from-emerald-400 via-blue-500 to-purple-600",
+      gradient: "from-[#1B3358] via-[#B7892D] to-[#C9A33B]",
       particles: "emerald",
       stats: [
         { label: "Projects", value: "50+" },
@@ -433,16 +433,17 @@ export default function Team() {
     <section className="relative py-24 px-4 sm:py-32 sm:px-6 lg:py-40 overflow-hidden">
       {/* Animated Particle Background */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(120,119,198,0.3),transparent_50%),radial-gradient(circle_at_80%_20%,rgba(255,119,198,0.3),transparent_50%),radial-gradient(circle_at_40%_40%,rgba(120,219,255,0.3),transparent_50%)]"></div>
+        <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, #0E2240 0%, #1B3358 50%, #0E2240 100%)" }}></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(183,137,45,0.18),transparent_50%),radial-gradient(circle_at_80%_20%,rgba(201,163,59,0.15),transparent_50%)]"></div>
         
         {/* Floating Particles */}
         <div className="absolute inset-0 overflow-hidden">
           {[...Array(20)].map((_, i) => (
             <div
               key={i}
-              className="absolute w-2 h-2 bg-white/20 rounded-full animate-float"
+              className="absolute w-2 h-2 rounded-full animate-float"
               style={{
+                background: "rgba(201,163,59,0.3)",
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
                 animationDelay: `${Math.random() * 10}s`,
@@ -454,28 +455,25 @@ export default function Team() {
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
-        {/* Neon Header */}
+        {/* Header */}
         <div className="text-center mb-24">
           <div className="inline-flex items-center mb-8">
-            <div className="w-32 h-1 bg-gradient-to-r from-emerald-400 via-blue-500 to-purple-600 rounded-full"></div>
-            <div className="w-4 h-4 mx-4 bg-gradient-to-r from-emerald-400 to-purple-600 rounded-full animate-ping"></div>
-            <div className="w-32 h-1 bg-gradient-to-l from-purple-600 via-blue-500 to-emerald-400 rounded-full"></div>
+            <div className="w-32 h-px rounded-full" style={{ background: "linear-gradient(to right, transparent, #C9A33B)" }}></div>
+            <div className="w-3 h-3 mx-4 rounded-full" style={{ background: "#C9A33B" }}></div>
+            <div className="w-32 h-px rounded-full" style={{ background: "linear-gradient(to left, transparent, #C9A33B)" }}></div>
           </div>
 
-          <div className="mb-12">
-            <div className="inline-block relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-emerald-500 via-blue-500 to-purple-600 blur-3xl animate-pulse"></div>
-              <span className="relative px-12 py-4 bg-black/20 backdrop-blur-xl text-white text-lg font-black uppercase tracking-widest rounded-3xl border border-white/30 shadow-2xl">
-                🔥 Elite Creators 🔥
-              </span>
-            </div>
+          <div className="mb-10">
+            <span className="relative px-10 py-3 backdrop-blur-xl text-sm font-semibold uppercase tracking-[0.22em] rounded-full inline-block" style={{ background: "rgba(201,163,59,0.12)", color: "#FCD34D", border: "1px solid rgba(201,163,59,0.4)" }}>
+              The Minds Behind Veer Bharat
+            </span>
           </div>
 
-          <h2 className="text-7xl sm:text-8xl lg:text-9xl font-black bg-gradient-to-r from-emerald-400 via-blue-500 to-purple-600 bg-clip-text text-transparent mb-8 leading-none tracking-tight">
-            CORE TEAM
+          <h2 className="text-6xl sm:text-7xl lg:text-8xl font-bold mb-6 leading-none tracking-tight" style={{ fontFamily: "var(--vb-font-head)", color: "#FBF7EF" }}>
+            Our <span style={{ color: "#C9A33B" }}>Team</span>
           </h2>
-          <p className="text-2xl sm:text-3xl text-white/80 max-w-3xl mx-auto leading-relaxed">
-            Building the future, one line of code at a time
+          <p className="text-xl sm:text-2xl max-w-3xl mx-auto leading-relaxed" style={{ color: "#9FB0C6" }}>
+            Building the future, one line of code at a time.
           </p>
         </div>
 
@@ -520,7 +518,7 @@ export default function Team() {
 
                   {/* Name & Role */}
                   <div className="text-center mb-8 flex-1 flex flex-col justify-center">
-                    <h3 className="text-5xl font-black bg-gradient-to-r from-white via-emerald-400 to-blue-500 bg-clip-text text-transparent mb-4 tracking-tight group-hover:scale-105 transition-transform">
+                    <h3 className="text-5xl font-black mb-4 tracking-tight group-hover:scale-105 transition-transform" style={{ fontFamily: "var(--vb-font-head)", color: "#FBF7EF" }}>
                       {member.name}
                     </h3>
                     <div className={`inline-block px-8 py-4 bg-gradient-to-r ${member.gradient} text-white font-black text-xl rounded-2xl shadow-2xl group-hover:scale-105 group-hover:shadow-emerald/50 transition-all duration-500 backdrop-blur-sm`}>
@@ -533,7 +531,7 @@ export default function Team() {
                     <div className="grid grid-cols-3 gap-4 mb-8 p-6 bg-white/10 backdrop-blur-xl rounded-2xl border border-white/30">
                       {member.stats.map((stat, idx) => (
                         <div key={idx} className="text-center">
-                          <div className="text-3xl font-black bg-gradient-to-r from-emerald-400 to-purple-500 bg-clip-text text-transparent mb-1">
+                          <div className="text-3xl font-black mb-1" style={{ color: "#C9A33B" }}>
                             {stat.value}
                           </div>
                           <div className="text-white/70 text-sm uppercase tracking-wider font-bold">

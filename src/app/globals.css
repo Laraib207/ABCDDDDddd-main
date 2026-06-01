@@ -1,95 +1,250 @@
 @import "~slick-carousel/slick/slick.css";
 @import "~slick-carousel/slick/slick-theme.css";
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* =========================================================
+   VEER BHARAT — PREMIUM DESIGN SYSTEM
+   Palette: ivory · ink-navy · mustard gold · maroon
+   ========================================================= */
+:root {
+  --vb-ivory:      #FBF7EF;
+  --vb-ivory-2:    #F4EDDF;
+  --vb-cream:      #FDFBF6;
+  --vb-line:       #E6DDC8;
+  --vb-line-soft:  #EFE7D5;
+  --vb-ink:        #0E2240;
+  --vb-ink-2:      #1B3358;
+  --vb-muted:      #5C6B82;
+  --vb-gold:       #B7892D;
+  --vb-gold-2:     #C9A33B;
+  --vb-gold-soft:  rgba(183,137,45,0.10);
+  --vb-maroon:     #8B2A3F;
+  --vb-maroon-2:   #6E1F31;
+  --vb-green:      #1E6B52;
+
+  --vb-font-head:  'Playfair Display', Georgia, serif;
+  --vb-font-body:  'Inter', system-ui, sans-serif;
+  --vb-font-serif: 'Cormorant Garamond', Georgia, serif;
+
+  --vb-shadow-sm:  0 2px 10px -4px rgba(14,34,64,0.12);
+  --vb-shadow:     0 18px 40px -22px rgba(14,34,64,0.28);
+  --vb-shadow-lg:  0 30px 70px -30px rgba(14,34,64,0.35);
+}
 
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background: #fffdf8;
-  color: #2b2a28;
+  background: var(--vb-ivory);
+  color: var(--vb-ink);
+  font-family: var(--vb-font-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+::selection {
+  background: var(--vb-gold);
+  color: #fff;
+}
+
+/* ---------- Layout helpers ---------- */
 .container {
   @apply mx-auto max-w-6xl px-4 sm:px-6;
 }
 
-.card {
-  @apply rounded-3xl border border-cream-300 bg-white/70 backdrop-blur shadow-glass;
+.vb-section {
+  @apply relative py-20 md:py-28;
 }
 
-.btn-primary {
-  @apply rounded-full bg-accent-500 text-ink-900 font-extrabold px-6 py-3;
+.vb-wrap {
+  @apply mx-auto max-w-7xl px-6 lg:px-8;
 }
 
-.btn-ghost {
-  @apply rounded-full border border-cream-300 text-ink-900 font-semibold px-6 py-3 hover:bg-white/60;
+/* ---------- Section heading kit ---------- */
+.vb-eyebrow {
+  font-family: var(--vb-font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--vb-gold);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.vb-eyebrow::before,
+.vb-eyebrow::after {
+  content: "";
+  width: 26px;
+  height: 1px;
+  background: var(--vb-gold);
+  opacity: 0.6;
 }
 
-.badge {
-  @apply inline-flex items-center gap-2 rounded-full border border-cream-300 bg-white/70 px-3 py-1 text-xs text-ink-500;
+.vb-heading {
+  font-family: var(--vb-font-head);
+  font-weight: 700;
+  color: var(--vb-ink);
+  letter-spacing: -0.01em;
+  line-height: 1.1;
 }
 
-.my-bg {
-  background: url(/../images/bg1.jpg) no-repeat;
-  background-size: 100% 100%;
-  padding: 20px;
-}
+.vb-heading-accent { color: var(--vb-gold); }
 
-/* ---- splash shimmer (gold on light bg) ---- */
-
-/* .shimmer-mask {
-  mask-image: linear-gradient(90deg, rgba(0,0,0,0.0) 0%, rgba(0,0,0,0.98) 40%, rgba(0,0,0,0.0) 80%);
-  background: linear-gradient(120deg, rgba(251, 219, 114, 0.14), rgba(255, 242, 179, 0.26), rgba(251, 219, 114, 0.14));
-  transform: translateX(-140%) rotate(8deg);
-  animation: splash-shimmer 1s cubic-bezier(.2,.9,.2,1) forwards;
-  mix-blend-mode: screen;
-  opacity: 0.95;
-} 
-
-/* shimmer animation (gold sweep) */
-
-/* @keyframes splash-shimmer {
-  0% { transform: translateX(-140%) rotate(8deg); opacity: 0; }
-  30% { opacity: 1; }
-  65% { transform: translateX(140%) rotate(8deg); opacity: 1; }
-  100% { transform: translateX(140%) rotate(8deg); opacity: 0; }
-}
-
-/* ---- floating particles (lighter) ---- */
-
-/* .splash-p {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.98), rgba(255,235,188,0.85));
+.vb-divider {
+  width: 64px;
+  height: 2px;
   border-radius: 999px;
-  filter: blur(6px);
-  opacity: 0.85;
-  transform-origin: center;
-  animation: splash-float 2400ms ease-in-out infinite;
-} */
+  background: linear-gradient(90deg, var(--vb-gold), var(--vb-gold-2));
+}
+.vb-divider--center { margin-left: auto; margin-right: auto; }
 
-/* per particle offsets */
-/* .splash-p.p1 { left: 10%; top: 60%; animation-delay: 0ms; transform: translateY(0) scale(1.0); width:10px; height:10px; }
-.splash-p.p2 { left: 24%; top: 14%; animation-delay: 160ms; transform: translateY(0) scale(0.7); width:9px; height:9px; }
-.splash-p.p3 { left: 78%; top: 24%; animation-delay: 80ms; transform: translateY(0) scale(1.4); width:14px; height:14px; }
-.splash-p.p4 { left: 66%; top: 72%; animation-delay: 220ms; transform: translateY(0) scale(0.9); }
-.splash-p.p5 { left: 44%; top: 6%; animation-delay: 60ms; transform: translateY(0) scale(0.8); } */
+.vb-lead {
+  font-family: var(--vb-font-body);
+  color: var(--vb-muted);
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
 
-/* particle motion */
-/* @keyframes splash-float {
-  0% { transform: translateY(0) scale(1); opacity: 0; }
-  10% { opacity: 0.9; }
-  50% { transform: translateY(-24px) scale(1.06); opacity: 0.95; }
-  90% { opacity: 0.45; }
-  100% { transform: translateY(0) scale(0.98); opacity: 0; }
-} */
+/* ---------- Buttons ---------- */
+.vb-btn-solid {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--vb-font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--vb-ivory);
+  background: var(--vb-ink);
+  padding: 13px 26px;
+  border-radius: 999px;
+  border: 1px solid var(--vb-ink);
+  box-shadow: var(--vb-shadow-sm);
+  transition: all .28s ease;
+  cursor: pointer;
+}
+.vb-btn-solid:hover {
+  background: var(--vb-maroon);
+  border-color: var(--vb-maroon);
+  transform: translateY(-2px);
+}
 
-/* reduce motion */
+.vb-btn-gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--vb-font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #1c1505;
+  background: linear-gradient(135deg, var(--vb-gold), var(--vb-gold-2));
+  padding: 13px 26px;
+  border-radius: 999px;
+  border: 1px solid rgba(183,137,45,0.5);
+  box-shadow: 0 10px 24px -12px rgba(183,137,45,0.7);
+  transition: all .28s ease;
+  cursor: pointer;
+}
+.vb-btn-gold:hover { transform: translateY(-2px); filter: brightness(1.05); }
+
+.vb-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--vb-font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--vb-ink);
+  background: transparent;
+  padding: 12px 25px;
+  border-radius: 999px;
+  border: 1px solid var(--vb-line);
+  transition: all .28s ease;
+  cursor: pointer;
+}
+.vb-btn-ghost:hover {
+  border-color: var(--vb-gold);
+  color: var(--vb-maroon);
+  background: var(--vb-gold-soft);
+}
+
+/* ---------- Cards ---------- */
+.vb-card {
+  background: #fff;
+  border: 1px solid var(--vb-line);
+  border-radius: 18px;
+  box-shadow: var(--vb-shadow);
+  overflow: hidden;
+  transition: transform .4s ease, box-shadow .4s ease, border-color .4s ease;
+}
+.vb-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--vb-shadow-lg);
+  border-color: rgba(183,137,45,0.4);
+}
+
+.vb-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--vb-line);
+  background: #fff;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--vb-muted);
+}
+
+/* legacy utility names kept for backward compatibility */
+.card { @apply rounded-3xl border border-cream-300 bg-white shadow-glass; }
+.btn-primary { @apply rounded-full bg-accent-500 text-ink-900 font-extrabold px-6 py-3; }
+.btn-ghost { @apply rounded-full border border-cream-300 text-ink-900 font-semibold px-6 py-3 hover:bg-white/60; }
+.badge { @apply inline-flex items-center gap-2 rounded-full border border-cream-300 bg-white/70 px-3 py-1 text-xs text-ink-500; }
+
+/* ---------- Animations ---------- */
+@keyframes vb-fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.vb-animate { animation: vb-fade-up .7s cubic-bezier(.22,.61,.36,1) both; }
+
+@keyframes vb-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-12px); }
+}
+
+/* ---------- Utilities ---------- */
+.vb-scrollbar-hide::-webkit-scrollbar { display: none; }
+.vb-scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+.vb-line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.vb-line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
+  html { scroll-behavior: auto; }
+}

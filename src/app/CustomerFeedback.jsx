@@ -473,14 +473,16 @@ const CustomerFeedback = () => {
   );
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[#DFC6F6] via-[#fef9c3] to-[#DFC6F6]">
+    <section className="vb-section px-4 sm:px-6 lg:px-8" style={{ background: "var(--vb-ivory-2)" }}>
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-5xl sm:text-6xl font-bold text-gray-900 mb-4">
-            See what people like about us.
+        <div className="text-center mb-14">
+          <span className="vb-eyebrow">Testimonials</span>
+          <h2 className="vb-heading mt-5 text-4xl md:text-5xl" style={{ fontFamily: "var(--vb-font-head)" }}>
+            What People <span className="vb-heading-accent">Love About Us</span>
           </h2>
-          <p className="text-lg text-gray-600">Real reviews from real customers</p>
+          <div className="vb-divider vb-divider--center mt-6" />
+          <p className="vb-lead mt-5">Real reviews from real customers</p>
         </div>
 
         {/* Testimonials Grid */}
@@ -488,14 +490,15 @@ const CustomerFeedback = () => {
           {currentTestimonials.map((testimonial) => (
             <div
               key={testimonial.id}
-              className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100"
+              className="vb-card p-6 flex flex-col"
             >
               {/* Star Rating */}
               <div className="flex gap-1 mb-4">
                 {[...Array(5)].map((_, i) => (
                   <svg
                     key={i}
-                    className="w-5 h-5 text-yellow-400 fill-current"
+                    className="w-5 h-5 fill-current"
+                    style={{ color: "var(--vb-gold-2)" }}
                     viewBox="0 0 20 20"
                   >
                     <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
@@ -504,24 +507,25 @@ const CustomerFeedback = () => {
               </div>
 
               {/* Feedback Text */}
-              <p className="text-gray-700 text-sm leading-relaxed mb-6">
-                <span className="bg-yellow-200 px-1">{testimonial.highlight}</span>
+              <p className="text-sm leading-relaxed mb-6 flex-1" style={{ color: "var(--vb-muted)" }}>
+                <span className="px-1 font-medium" style={{ background: "rgba(201,163,59,0.18)", color: "var(--vb-ink)" }}>{testimonial.highlight}</span>
                 {" "}{testimonial.feedback}
               </p>
 
               {/* Customer Info */}
-              <div className="flex items-center gap-3 pt-4 border-t border-gray-100">
+              <div className="flex items-center gap-3 pt-4" style={{ borderTop: "1px solid var(--vb-line)" }}>
                 <img
                   src={testimonial.image}
                   alt={testimonial.name}
-                  className="w-12 h-12 rounded-full object-cover border-2 border-gray-200"
+                  className="w-12 h-12 rounded-full object-cover"
+                  style={{ border: "2px solid var(--vb-line)" }}
                   loading="lazy"
                 />
                 <div>
-                  <h4 className="font-bold text-gray-900 text-sm">
+                  <h4 className="font-bold text-sm" style={{ color: "var(--vb-ink)" }}>
                     {testimonial.name}
                   </h4>
-                  <p className="text-xs text-gray-600">{testimonial.location}</p>
+                  <p className="text-xs" style={{ color: "var(--vb-muted)" }}>{testimonial.location}</p>
                 </div>
               </div>
             </div>

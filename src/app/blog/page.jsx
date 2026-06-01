@@ -6,34 +6,19 @@ import { motion } from "framer-motion";
 
 const BlogHero = () => {
   return (
-    <section className="relative py-24 px-6 overflow-hidden bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50">
-      {/* Animated Background Pattern */}
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmNTk1MGYiIGZpbGwtb3BhY2l0eT0iMC4wNiI+PHBhdGggZD0iTTM2IDE0YzQgMCA4LTQgOC04cy00LTgtOC04LTggNC04IDggNCA4IDggOHoiLz48L2c+PC9nPjwvc3ZnPg==')] opacity-60"></div>
-      
+    <section className="relative py-24 px-6 overflow-hidden" style={{ background: "var(--vb-ivory-2)" }}>
       {/* Floating Elements */}
       <motion.div
-        className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-orange-400 to-pink-500 rounded-full blur-3xl opacity-20"
-        animate={{
-          y: [0, -30, 0],
-          scale: [1, 1.2, 1],
-        }}
-        transition={{
-          duration: 6,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
+        className="absolute top-20 left-10 w-32 h-32 rounded-full blur-3xl"
+        style={{ background: "rgba(183,137,45,0.18)" }}
+        animate={{ y: [0, -30, 0], scale: [1, 1.2, 1] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
-        className="absolute bottom-20 right-10 w-40 h-40 bg-gradient-to-br from-purple-400 to-blue-500 rounded-full blur-3xl opacity-20"
-        animate={{
-          y: [0, 30, 0],
-          scale: [1, 1.3, 1],
-        }}
-        transition={{
-          duration: 7,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
+        className="absolute bottom-20 right-10 w-40 h-40 rounded-full blur-3xl"
+        style={{ background: "rgba(139,42,63,0.14)" }}
+        animate={{ y: [0, 30, 0], scale: [1, 1.3, 1] }}
+        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
       />
       
       <div className="max-w-6xl mx-auto relative z-10">
@@ -43,51 +28,41 @@ const BlogHero = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="text-center mb-12"
         >
-          <motion.span
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-            className="inline-block px-6 py-3 rounded-full bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 text-white text-base font-bold mb-6 shadow-xl"
-          >
-            🌾 VEER BHARAT INSIGHTS
-          </motion.span>
+          <span className="vb-eyebrow">Veer Bharat Insights</span>
           
-          <h1 className="text-6xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-600 via-pink-600 to-purple-600 mb-6 leading-tight">
-            Our Blog
+          <h1 className="vb-heading mt-5 text-5xl md:text-7xl" style={{ fontFamily: "var(--vb-font-head)" }}>
+            Our <span className="vb-heading-accent">Blog</span>
           </h1>
+          <div className="vb-divider vb-divider--center mt-6" />
           
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
-            className="text-2xl md:text-3xl text-gray-700 max-w-4xl mx-auto font-medium leading-relaxed"
-          >
-            Dive into the world of pure, authentic oils and premium rice. Discover health benefits, cooking tips, and the tradition behind every drop!
-          </motion.p>
+          <p className="vb-lead mx-auto mt-6 max-w-3xl text-lg">
+            Dive into the world of pure, authentic oils and premium rice. Discover health benefits, cooking tips, and the tradition behind every drop.
+          </p>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
+          initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white"
+          className="relative rounded-3xl overflow-hidden"
+          style={{ boxShadow: "var(--vb-shadow-lg)", border: "1px solid var(--vb-line)" }}
         >
-          <div className="relative h-[450px]">
+          <div className="relative h-[420px]">
             <Image
               src="/images/blog-hero.jpg"
               alt="Veer Bharat Premium Oils"
               fill
               className="object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+            <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(14,34,64,0.75), transparent)" }}></div>
             <motion.div
               initial={{ x: -50, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: 0.6 }}
               className="absolute bottom-10 left-10 text-white max-w-xl"
             >
-              <h3 className="text-4xl font-black mb-3 drop-shadow-lg">Pure. Natural. Authentic.</h3>
-              <p className="text-xl font-medium drop-shadow-md">Experience the tradition of quality oils & premium rice from Veer Bharat</p>
+              <h3 className="text-3xl md:text-4xl font-bold mb-3 drop-shadow-lg" style={{ fontFamily: "var(--vb-font-head)" }}>Pure. Natural. Authentic.</h3>
+              <p className="text-lg font-medium drop-shadow-md" style={{ color: "#E9DEC1" }}>Experience the tradition of quality oils & premium rice from Veer Bharat</p>
             </motion.div>
           </div>
         </motion.div>
@@ -205,11 +180,16 @@ const BlogGrid = () => {
             onClick={() => setActiveCategory(cat)}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className={`px-7 py-3.5 rounded-full font-bold text-lg transition-all duration-300 ${
+            className={`px-6 py-3 rounded-full font-semibold text-sm transition-all duration-300 ${
               activeCategory === cat
-                ? "bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 text-white shadow-xl scale-110"
-                : "bg-white text-gray-700 hover:bg-gradient-to-r hover:from-orange-100 hover:to-pink-100 shadow-md hover:shadow-lg"
+                ? "text-white shadow-lg scale-105"
+                : "bg-white shadow-sm hover:shadow-md"
             }`}
+            style={
+              activeCategory === cat
+                ? { background: "var(--vb-ink)", border: "1px solid var(--vb-ink)" }
+                : { color: "var(--vb-ink)", border: "1px solid var(--vb-line)" }
+            }
           >
             {cat}
           </motion.button>
@@ -217,70 +197,60 @@ const BlogGrid = () => {
       </motion.div>
 
       {/* Blog Grid */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {filteredBlogs.map((blog, idx) => (
           <motion.article
             key={blog.id}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: idx * 0.1 }}
-            whileHover={{ y: -10 }}
-            className="group bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden border-2 border-transparent hover:border-gradient-to-r hover:from-orange-400 hover:to-pink-400 relative"
+            whileHover={{ y: -8 }}
+            className="vb-card group relative"
           >
-            <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-orange-400 via-pink-400 to-purple-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
-            
-            <div className="relative z-10 bg-white rounded-3xl overflow-hidden">
-              <div className="relative h-72 overflow-hidden">
+            <div className="relative z-10 rounded-[18px] overflow-hidden">
+              <div className="relative h-64 overflow-hidden">
                 <Image
                   src={blog.image}
                   alt={blog.title}
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity"></div>
+                <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(14,34,64,0.7), transparent 60%)" }}></div>
                 
-                <motion.div
-                  className="absolute top-5 right-5"
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                >
-                  <span className="px-5 py-2.5 rounded-full bg-gradient-to-r from-orange-500 to-pink-500 text-white text-base font-bold shadow-2xl backdrop-blur-sm">
+                <div className="absolute top-5 right-5">
+                  <span className="px-4 py-2 rounded-full text-white text-sm font-semibold shadow-lg" style={{ background: "var(--vb-gold)" }}>
                     {blog.category}
                   </span>
-                </motion.div>
+                </div>
 
-                <div className="absolute bottom-5 left-5 flex items-center gap-3 text-white text-base font-semibold">
-                  <span className="flex items-center gap-1 bg-white/20 backdrop-blur-md px-4 py-2 rounded-full">
-                    📅 {blog.date}
+                <div className="absolute bottom-5 left-5 flex items-center gap-3 text-white text-sm font-medium">
+                  <span className="flex items-center gap-1 backdrop-blur-md px-3 py-1.5 rounded-full" style={{ background: "rgba(255,255,255,0.18)" }}>
+                    {blog.date}
                   </span>
-                  <span className="flex items-center gap-1 bg-white/20 backdrop-blur-md px-4 py-2 rounded-full">
-                    ⏱️ {blog.readTime}
+                  <span className="flex items-center gap-1 backdrop-blur-md px-3 py-1.5 rounded-full" style={{ background: "rgba(255,255,255,0.18)" }}>
+                    {blog.readTime}
                   </span>
                 </div>
               </div>
 
               <div className="p-7">
-                <h3 className="text-2xl font-black text-gray-900 mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-orange-600 group-hover:to-pink-600 transition-all duration-300 leading-tight">
+                <h3 className="text-xl font-bold mb-4 leading-tight transition-colors duration-300 group-hover:text-[#8B2A3F]" style={{ fontFamily: "var(--vb-font-head)", color: "var(--vb-ink)" }}>
                   {blog.title}
                 </h3>
 
-                <p className="text-lg text-gray-600 leading-relaxed mb-5 font-medium">
+                <p className="text-base leading-relaxed mb-5" style={{ color: "var(--vb-muted)" }}>
                   {blog.excerpt}
                 </p>
 
-                <div className="bg-gradient-to-br from-orange-50 to-pink-50 rounded-2xl p-5 mb-6 border border-orange-100">
-                  <p className="text-base text-gray-700 leading-relaxed line-clamp-4">
+                <div className="rounded-xl p-5 mb-6" style={{ background: "var(--vb-ivory-2)", border: "1px solid var(--vb-line)" }}>
+                  <p className="text-sm leading-relaxed vb-line-clamp-3" style={{ color: "var(--vb-muted)" }}>
                     {blog.content}
                   </p>
                 </div>
 
-                <Link
-                  href={`/blog/${blog.id}`}
-                  className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-gradient-to-r from-orange-500 via-pink-500 to-purple-500 text-white text-lg font-bold shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 group/btn"
-                >
-                  <span>Read Article</span>
-                  <motion.span className="group-hover/btn:translate-x-1 transition-transform">
-                    →
-                  </motion.span>
+                <Link href={`/blog/${blog.id}`} className="vb-btn-solid group/btn">
+                  Read Article
+                  <span className="group-hover/btn:translate-x-1 transition-transform">→</span>
                 </Link>
               </div>
             </div>
@@ -289,12 +259,8 @@ const BlogGrid = () => {
       </div>
 
       {filteredBlogs.length === 0 && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="text-center py-20"
-        >
-          <p className="text-2xl text-gray-500 font-medium">No articles found in this category.</p>
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-20">
+          <p className="text-2xl font-medium" style={{ color: "var(--vb-muted)" }}>No articles found in this category.</p>
         </motion.div>
       )}
     </section>
@@ -303,7 +269,7 @@ const BlogGrid = () => {
 
 export default function BlogPage() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-white via-purple-50 to-pink-50">
+    <main className="min-h-screen" style={{ background: "var(--vb-ivory)" }}>
       <BlogHero />
       <BlogGrid />
     </main>

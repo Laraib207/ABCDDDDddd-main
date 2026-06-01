@@ -28,7 +28,7 @@ export default function Certificate({
   ],
 }) {
   return (
-    <div className="min-h-screen flex items-start justify-center bg-gradient-to-br from-neutral-50 via-amber-50 to-yellow-50 py-12 px-4">
+    <div className="min-h-screen flex items-start justify-center py-12 px-4" style={{ background: "var(--vb-ivory)" }}>
       <div className="max-w-4xl w-full">
         {/* Navbar with 3 icons */}
         <div className="flex items-center justify-center gap-6 mb-8 bg-white rounded-lg shadow-md p-4">
@@ -108,7 +108,7 @@ export default function Certificate({
           style={{ printColorAdjust: "exact" }}
         >
           {/* Certificate header band */}
-          <div className="bg-gradient-to-r from-amber-500 to-yellow-500 px-6 py-4 text-white">
+          <div className="px-6 py-4 text-white" style={{ background: "linear-gradient(to right, var(--vb-ink), var(--vb-ink2))" }}>
             <div className="flex items-center justify-between">
               <div>
                 <div className="text-sm uppercase font-bold tracking-wider">Certificate</div>
@@ -136,9 +136,9 @@ export default function Certificate({
 
               {/* small caption under the image */}
               <div className="mt-4 text-sm text-gray-600">
-                Example certificate — keep your real certificate image in <code>/public/images/</code> and update the path.
+                Official certificate of registration for Veer Bharat.
               </div>
-l            </div>
+            </div>
 
             {/* RIGHT: metadata / details */}
             <div className="md:col-span-1 flex flex-col gap-4">
@@ -166,15 +166,10 @@ l            </div>
               </div>
 
               <div className="text-center text-xs text-gray-500">
-                Tip: Use the Print button for a clean printout (choose "Scale: 100%" in print dialog).
+                Use the Print button for a clean printout (choose "Scale: 100%" in the print dialog).
               </div>
             </div>
           </div>
-        </div>
-
-        {/* Footer small CTA */}
-        <div className="mt-6 text-center text-sm text-gray-700">
-          Want a downloadable PDF version? I can add a client-side PDF exporter (html2pdf/html2canvas) — tell me if you want that.
         </div>
       </div>
     </div>

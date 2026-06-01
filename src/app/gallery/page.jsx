@@ -140,15 +140,16 @@ export default function GalleryPage() {
   };
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900/50 to-slate-900 text-white overflow-hidden">
+    <main className="min-h-screen overflow-hidden" style={{ background: "linear-gradient(135deg, #0E2240 0%, #1B3358 50%, #0E2240 100%)", color: "#fff" }}>
       {/* Animated Background Particles */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(120,119,198,0.4),transparent_50%),radial-gradient(circle_at_80%_20%,rgba(255,119,198,0.4),transparent_50%),radial-gradient(circle_at_40%_40%,rgba(120,219,255,0.3),transparent_50%)]"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(183,137,45,0.20),transparent_50%),radial-gradient(circle_at_80%_20%,rgba(201,163,59,0.16),transparent_50%)]"></div>
         {[...Array(30)].map((_, i) => (
           <div
             key={i}
-            className="absolute w-1 h-1 md:w-2 md:h-2 bg-white/30 rounded-full animate-float"
+            className="absolute w-1 h-1 md:w-2 md:h-2 rounded-full animate-float"
             style={{
+              background: "rgba(201,163,59,0.3)",
               left: `${i * 13.3}%`,
               top: `${(i * 17.2) % 100}%`,
               animationDelay: `${i * 0.3}s`,
@@ -159,41 +160,38 @@ export default function GalleryPage() {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10 py-20">
-        {/* Neon Header */}
+        {/* Header */}
         <motion.div 
           initial={{ y: -50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          className="text-center mb-24"
+          className="text-center mb-20"
         >
-          <div className="inline-flex items-center mb-12">
-            <div className="w-32 h-1 bg-gradient-to-r from-emerald-400 via-blue-400 to-purple-500 rounded-full mr-6"></div>
-            <div className="w-6 h-6 bg-gradient-to-r from-emerald-400 to-purple-500 rounded-2xl animate-pulse"></div>
-            <div className="w-32 h-1 bg-gradient-to-l from-purple-500 via-blue-400 to-emerald-400 rounded-full ml-6"></div>
+          <div className="inline-flex items-center mb-8">
+            <div className="w-28 h-px rounded-full mr-5" style={{ background: "linear-gradient(to right, transparent, #C9A33B)" }}></div>
+            <div className="w-3 h-3 rounded-full" style={{ background: "#C9A33B" }}></div>
+            <div className="w-28 h-px rounded-full ml-5" style={{ background: "linear-gradient(to left, transparent, #C9A33B)" }}></div>
           </div>
           
-          <div className="relative mb-8">
-            <div className="absolute inset-0 bg-gradient-to-r from-emerald-500 via-blue-500 to-purple-600 blur-3xl animate-pulse"></div>
-            <h1 className="relative text-7xl md:text-8xl lg:text-9xl font-black bg-gradient-to-r from-emerald-400 via-blue-500 to-purple-600 bg-clip-text text-transparent tracking-tight">
-              VISUAL 
-              <span className="block">GALLERY</span>
-            </h1>
-          </div>
+          <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6" style={{ fontFamily: "var(--vb-font-head)", color: "#FBF7EF" }}>
+            Visual <span style={{ color: "#C9A33B" }}>Gallery</span>
+          </h1>
           
-          <p className="text-xl md:text-2xl text-white/70 max-w-3xl mx-auto leading-relaxed backdrop-blur-sm">
-            Captured moments of excellence • Dive into our visual journey
+          <p className="text-lg md:text-xl max-w-3xl mx-auto leading-relaxed" style={{ color: "#9FB0C6" }}>
+            Captured moments of excellence — dive into our visual journey.
           </p>
         </motion.div>
 
-        {/* 3D Masonry Grid */}
+        {/* Masonry Grid */}
         <section className="relative">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 mb-24">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 mb-20">
             {GALLERY_IMAGES.map((src, i) => (
               <motion.button
                 key={i}
-                whileHover={{ scale: 1.05, rotateX: 5, rotateY: 5 }}
+                whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => setOpenIndex(i)}
-                className="group relative w-full aspect-square rounded-3xl overflow-hidden bg-white/5 backdrop-blur-xl border-2 border-white/10 hover:border-emerald-400/50 hover:bg-white/10 transition-all duration-500 shadow-xl hover:shadow-emerald/20 cursor-pointer"
+                className="group relative w-full aspect-square rounded-2xl overflow-hidden transition-all duration-500 cursor-pointer"
+                style={{ background: "rgba(251,247,239,0.05)", border: "1px solid rgba(201,163,59,0.2)" }}
               >
                 <div className="absolute inset-0">
                   <Image 
@@ -203,67 +201,14 @@ export default function GalleryPage() {
                     className="object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                 </div>
-                
-                {/* Neon Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                
-                {/* 3D Shine Effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 -skew-x-12 opacity-0 group-hover:opacity-100 transition-opacity duration-700 transform -translate-x-full group-hover:translate-x-full" />
-                
-                {/* Neon Border Glow */}
-                <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 via-blue-500 to-purple-600 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700 scale-110"></div>
-                
-                {/* Center Icon */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-16 h-16 bg-white/10 backdrop-blur-xl rounded-2xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 scale-0 group-hover:scale-100">
-                    <svg className="w-8 h-8 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4a1 1 0 001 1h4m-4 0l5 5m11-1v4a1 1 0 01-1 1h-4m-4 0l5 5" />
-                    </svg>
-                  </div>
-                </div>
-                
-                {/* Number Badge */}
-                <div className="absolute top-4 right-4 w-12 h-12 bg-gradient-to-br from-emerald-500 to-blue-600 text-white font-bold text-lg rounded-2xl flex items-center justify-center shadow-2xl opacity-0 group-hover:opacity-100 transition-all duration-500 scale-0 group-hover:scale-100">
+                <div className="absolute top-3 right-3 w-9 h-9 text-white font-bold text-sm rounded-xl flex items-center justify-center shadow-xl opacity-0 group-hover:opacity-100 transition-all duration-500" style={{ background: "linear-gradient(135deg, #B7892D, #C9A33B)" }}>
                   {i + 1}
                 </div>
               </motion.button>
             ))}
           </div>
         </section>
-
-        {/* Stats Footer */}
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-center py-16"
-        >
-          <div className="grid grid-cols-3 md:grid-cols-4 gap-8 max-w-4xl mx-auto mb-12">
-            <div className="text-center">
-              <div className="text-4xl md:text-5xl font-black bg-gradient-to-r from-emerald-400 to-blue-500 bg-clip-text text-transparent mb-2">
-                {GALLERY_IMAGES.length}+
-              </div>
-              <div className="text-white/60 text-sm uppercase tracking-wider font-bold">Moments</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl md:text-5xl font-black bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent mb-2">
-                4K
-              </div>
-              <div className="text-white/60 text-sm uppercase tracking-wider font-bold">Quality</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl md:text-5xl font-black bg-gradient-to-r from-blue-400 to-emerald-500 bg-clip-text text-transparent mb-2">
-                360°
-              </div>
-              <div className="text-white/60 text-sm uppercase tracking-wider font-bold">Views</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl md:text-5xl font-black bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent mb-2">
-                Live
-              </div>
-              <div className="text-white/60 text-sm uppercase tracking-wider font-bold">Updates</div>
-            </div>
-          </div>
-        </motion.div>
       </div>
 
       {/* ULTIMATE 3D Lightbox */}

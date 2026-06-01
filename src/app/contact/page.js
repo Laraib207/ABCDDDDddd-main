@@ -1,228 +1,146 @@
-// export default function Contact() {
-//   return (
-//     <section className="max-w-4xl mx-auto py-16 px-6">
-//       <h2 className="text-4xl font-bold text-red-600 mb-6 text-center">Contact Us</h2>
-//       <p className="text-gray-700 text-center mb-8">
-//         Get in touch with us for business inquiries or partnership opportunities.
-//       </p>
-//       <form className="space-y-4">
-//         <input type="text" placeholder="Your Name" className="w-full border rounded-lg px-4 py-3" />
-//         <input type="email" placeholder="Your Email" className="w-full border rounded-lg px-4 py-3" />
-//         <textarea placeholder="Your Message" rows="5" className="w-full border rounded-lg px-4 py-3"></textarea>
-//         <button type="submit" className="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition">
-//           Send Message
-//         </button>
-//       </form>
-//       <div className="mt-10 text-center">
-//         <p>Email: <span className="text-red-600">info@veer-bharat.com</span></p>
-//         <p>Website: <span className="text-red-600">www.veer-bharat.com</span></p>
-//       </div>
-//     </section>
-//   );
-// }
-
-
 import {
   FiMail,
   FiPhone,
   FiMapPin,
   FiSend,
-  FiCheck,
   FiClock,
-  FiPackage
-} from 'react-icons/fi'
+  FiPackage,
+} from "react-icons/fi";
+
+export const metadata = {
+  title: "Contact Us",
+  description:
+    "Get in touch with Veer Bharat for premium edible oils — bulk orders, partnerships and distributorship. Call +91 9266328444 or email info@veerbharat.com.",
+};
 
 export default function Contact() {
-
-
   const contactInfo = [
     {
       icon: <FiMapPin className="w-6 h-6" />,
-      title: 'Our Location',
-      details: ' Ithum Tower B sector 62',
-      subDetails: 'Sector 62, Electronic Metro Station',
-      location: 'Noida, Uttar Pradesh',
-      color: 'from-yellow-200 to-yellow-300',
-      // href: 'https://maps.google.com/?q=Noida+Sector+62'
-      href: 'https://share.google/IlONR7iL9kw8AzDoX'
+      title: "Our Location",
+      details: "Noida Sector 61",
+      subDetails: "Plot No. 40, Noida Sector 61, Uttar Pradesh 201304 (India)",
+      href: "https://www.magicbricks.com/Sector-61-in-Noida-Overview",
+      external: true,
     },
     {
       icon: <FiPhone className="w-6 h-6" />,
-      title: 'Call Us',
-      details: '+91 91 9266328444 ',
-      subDetails: 'Mon - Sat (9:00 AM - 6:00 PM)',
-      location: '',
-      color: 'from-purple-200 to-purple-300',
-      href: 'tel:+91 9266328444'
+      title: "Call Us",
+      details: "+91 9266328444",
+      subDetails: "Mon – Sat (9:00 AM – 6:00 PM)",
+      href: "tel:+919266328444",
     },
     {
       icon: <FiMail className="w-6 h-6" />,
-      title: 'Email Us',
-      details: 'info@veerbharat.com',
-      subDetails: 'We reply within 24 hours',
-      location: '',
-      color: 'from-yellow-200 to-purple-200',
-      href: 'mailto:info@veerbharat.com'
-    }
-  ]
+      title: "Email Us",
+      details: "info@veerbharat.com",
+      subDetails: "We reply within 24 hours",
+      href: "mailto:info@veerbharat.com",
+    },
+  ];
 
   const products = [
-    '🌻 Soybean Oil',
-    '🌿 Mustard Oil',
-    '🌴 Palm Oil',
-    '🥜 Groundnut Oil',
-    '🌾 Rice Bran Oil',
-    '🫒 Olive Oil'
-  ]
+    "Soyabean Oil",
+    "Mustard Oil",
+    "Palm Oil",
+    "Sunflower Oil",
+    "Rice Bran Oil",
+    "Brand Rice",
+  ];
 
   return (
-    <section className="relative py-16 md:py-20 lg:py-24 overflow-hidden bg-gradient-to-br from-[#fef9c3] via-white to-[#DFC6F6]">
-      {/* Decorative Background Elements */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[#DFC6F6] rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-pulse" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#fef9c3] rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-pulse" style={{ animationDelay: '1s' }} />
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-[#fef9c3] to-[#DFC6F6] rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse" style={{ animationDelay: '2s' }} />
+    <section className="relative py-16 md:py-24 overflow-hidden" style={{ background: "var(--vb-ivory)", color: "var(--vb-ink)" }}>
+      <div className="absolute inset-0 -z-10 pointer-events-none">
+        <div className="absolute top-0 right-0 w-96 h-96 rounded-full blur-3xl" style={{ background: "rgba(183,137,45,0.10)" }} />
+        <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full blur-3xl" style={{ background: "rgba(139,42,63,0.08)" }} />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Header Section */}
-        <div className="text-center mb-12 md:mb-16">
-          <div className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-gradient-to-r from-[#fef9c3] to-[#DFC6F6] border-2 border-red-600/20 mb-6 shadow-lg">
-            <FiPackage className="w-5 h-5 text-red-600" />
-            <span className="text-red-600 font-bold text-sm">Premium Quality Oils</span>
-          </div>
-          
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-red-600 mb-4">
-            Get In <span className="bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent">Touch</span>
-          </h2>
-          <p className="text-gray-700 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-            Connect with <span className="font-bold text-red-600">Veer Bharat</span> for premium quality edible oils. 
-            We're here to serve your business needs!
+        {/* Header */}
+        <div className="text-center mb-14">
+          <span className="vb-eyebrow">We'd Love to Hear From You</span>
+          <h1 className="vb-heading mt-5 text-4xl md:text-5xl" style={{ fontFamily: "var(--vb-font-head)" }}>
+            Get In <span className="vb-heading-accent">Touch</span>
+          </h1>
+          <div className="vb-divider vb-divider--center mt-6" />
+          <p className="vb-lead mx-auto mt-6 max-w-2xl">
+            Connect with <span className="font-semibold" style={{ color: "var(--vb-ink)" }}>Veer Bharat</span> for premium quality edible oils.
+            We're here to serve your business needs.
           </p>
         </div>
 
-        {/* Main Content Grid */}
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 mb-12">
-          
-          {/* Left Column - Contact Form */}
-          <div className="relative">
-            <div className="bg-white/80 backdrop-blur-xl rounded-3xl p-6 md:p-8 lg:p-10 shadow-2xl border-2 border-white/50">
-              <div className="mb-8">
-                <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">Send us a Message</h3>
-                <p className="text-gray-600">Fill out the form and we'll respond promptly</p>
+          {/* Form */}
+          <div className="vb-card p-6 md:p-10">
+            <div className="mb-8">
+              <h3 className="text-2xl font-bold mb-2" style={{ fontFamily: "var(--vb-font-head)", color: "var(--vb-ink)" }}>Send us a Message</h3>
+              <p style={{ color: "var(--vb-muted)" }}>Fill out the form and we'll respond promptly.</p>
+            </div>
+
+            <form action="https://formspree.io/f/mkgpgdov" method="POST" className="space-y-5">
+              <div className="grid sm:grid-cols-2 gap-5">
+                <div>
+                  <label className="block text-sm font-semibold mb-2" style={{ color: "var(--vb-ink)" }}>Your Name *</label>
+                  <input type="text" name="name" required placeholder="Enter your name" className="vb-input" />
+                </div>
+                <div>
+                  <label className="block text-sm font-semibold mb-2" style={{ color: "var(--vb-ink)" }}>Phone Number *</label>
+                  <input type="tel" name="phone" required placeholder="+91 9266328444" className="vb-input" />
+                </div>
               </div>
 
-                  <form action="https://formspree.io/f/mkgpgdov" method="POST" className="space-y-5">
-                    <div className="grid sm:grid-cols-2 gap-5">
-                      <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-2">
-                          Your Name *
-                        </label>
-                        <input
-                          type="text"
-                          name="name"
-                          required
-                          className="w-full px-4 py-3 rounded-xl bg-gradient-to-r from-[#fef9c3]/30 to-[#DFC6F6]/30 border-2 border-gray-200 focus:border-red-500 focus:outline-none transition-all duration-300 text-gray-900 placeholder-gray-500"
-                          placeholder="Enter your name"
-                        />
-                      </div>
+              <div>
+                <label className="block text-sm font-semibold mb-2" style={{ color: "var(--vb-ink)" }}>Email Address *</label>
+                <input type="email" name="email" required placeholder="your@email.com" className="vb-input" />
+              </div>
 
-                      <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-2">
-                          Phone Number *
-                        </label>
-                        <input
-                          type="tel"
-                          name="phone"
-                          required
-                          className="w-full px-4 py-3 rounded-xl bg-gradient-to-r from-[#fef9c3]/30 to-[#DFC6F6]/30 border-2 border-gray-200 focus:border-red-500 focus:outline-none transition-all duration-300 text-gray-900 placeholder-gray-500"
-                          placeholder="+91 9266328444"
-                        />
-                      </div>
-                    </div>
+              <div>
+                <label className="block text-sm font-semibold mb-2" style={{ color: "var(--vb-ink)" }}>Subject *</label>
+                <select name="subject" required className="vb-input">
+                  <option value="">Select a subject</option>
+                  <option value="bulk-order">Bulk Order Inquiry</option>
+                  <option value="partnership">Partnership Opportunity</option>
+                  <option value="distributor">Become a Distributor</option>
+                  <option value="product-info">Product Information</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
 
-                    <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
-                        Email Address *
-                      </label>
-                        <input
-                          type="email"
-                          name="email"
-                          required
-                          className="w-full px-4 py-3 rounded-xl bg-gradient-to-r from-[#fef9c3]/30 to-[#DFC6F6]/30 border-2 border-gray-200 focus:border-red-500 focus:outline-none transition-all duration-300 text-gray-900 placeholder-gray-500"
-                          placeholder="your@email.com"
-                        />
-                    </div>
+              <div>
+                <label className="block text-sm font-semibold mb-2" style={{ color: "var(--vb-ink)" }}>Your Message *</label>
+                <textarea name="message" required rows={5} placeholder="Tell us about your requirements..." className="vb-input resize-none" />
+              </div>
 
-                    <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
-                        Subject *
-                      </label>
-                      <select
-                        name="subject"
-                        required
-                        className="w-full px-4 py-3 rounded-xl bg-gradient-to-r from-[#fef9c3]/30 to-[#DFC6F6]/30 border-2 border-gray-200 focus:border-red-500 focus:outline-none transition-all duration-300 text-gray-900"
-                      >
-                        <option value="">Select a subject</option>
-                        <option value="bulk-order">Bulk Order Inquiry</option>
-                        <option value="partnership">Partnership Opportunity</option>
-                        <option value="distributor">Become a Distributor</option>
-                        <option value="product-info">Product Information</option>
-                        <option value="other">Other</option>
-                      </select>
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
-                        Your Message *
-                      </label>
-                      <textarea
-                        name="message"
-                        required
-                        rows={5}
-                        className="w-full px-4 py-3 rounded-xl bg-gradient-to-r from-[#fef9c3]/30 to-[#DFC6F6]/30 border-2 border-gray-200 focus:border-red-500 focus:outline-none transition-all duration-300 text-gray-900 placeholder-gray-500 resize-none"
-                        placeholder="Tell us about your requirements..."
-                      />
-                    </div>
-
-                    <button
-                      type="submit"
-                      className="group w-full px-8 py-4 rounded-xl bg-gradient-to-r from-red-600 to-orange-600 text-white font-bold text-lg shadow-xl hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 flex items-center justify-center gap-3"
-                    >
-                      <FiSend className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                      Send Message
-                    </button>
-                  </form>
-            </div>
+              <button type="submit" className="vb-btn-solid w-full justify-center group">
+                <FiSend className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                Send Message
+              </button>
+            </form>
           </div>
 
-          {/* Right Column - Contact Info & Map */}
+          {/* Info column */}
           <div className="space-y-6">
-            {/* Contact Cards */}
             {contactInfo.map((info, index) => (
               <a
                 key={index}
                 href={info.href}
-                target={info.title === 'Our Location' ? '_blank' : '_self'}
-                rel={info.title === 'Our Location' ? 'noopener noreferrer' : undefined}
+                target={info.external ? "_blank" : "_self"}
+                rel={info.external ? "noopener noreferrer" : undefined}
                 className="block group"
               >
-                <div className={`bg-gradient-to-r ${info.color} rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] border-2 border-white/50`}>
+                <div className="vb-card p-6">
                   <div className="flex items-start gap-4">
-                    <div className="p-4 rounded-xl bg-white/80 text-red-600 group-hover:scale-110 transition-transform duration-300 shadow-md">
+                    <div className="p-4 rounded-xl group-hover:scale-110 transition-transform duration-300" style={{ background: "var(--vb-gold-soft)", color: "var(--vb-gold)" }}>
                       {info.icon}
                     </div>
                     <div className="flex-1">
-                      <h4 className="text-lg font-bold text-gray-900 mb-2">{info.title}</h4>
-                      <p className="text-gray-800 font-semibold text-base mb-1">{info.details}</p>
+                      <h4 className="text-lg font-bold mb-1" style={{ color: "var(--vb-ink)" }}>{info.title}</h4>
+                      <p className="font-semibold mb-1" style={{ color: "var(--vb-maroon)" }}>{info.details}</p>
                       {info.subDetails && (
-                        <p className="text-gray-700 text-sm flex items-center gap-2">
-                          {info.title === 'Call Us' && <FiClock className="w-4 h-4" />}
+                        <p className="text-sm flex items-center gap-2" style={{ color: "var(--vb-muted)" }}>
+                          {info.title === "Call Us" && <FiClock className="w-4 h-4" />}
                           {info.subDetails}
                         </p>
-                      )}
-                      {info.location && (
-                        <p className="text-gray-700 text-sm mt-1">{info.location}</p>
                       )}
                     </div>
                   </div>
@@ -230,17 +148,18 @@ export default function Contact() {
               </a>
             ))}
 
-            {/* Products Section */}
-            <div className="bg-white/80 backdrop-blur-xl rounded-2xl p-6 shadow-lg border-2 border-white/50">
-              <h4 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                <FiPackage className="w-5 h-5 text-red-600" />
+            {/* Products */}
+            <div className="vb-card p-6">
+              <h4 className="text-xl font-bold mb-4 flex items-center gap-2" style={{ color: "var(--vb-ink)" }}>
+                <FiPackage className="w-5 h-5" style={{ color: "var(--vb-gold)" }} />
                 Our Premium Products
               </h4>
               <div className="grid grid-cols-2 gap-3">
                 {products.map((product, index) => (
                   <div
                     key={index}
-                    className="px-4 py-3 rounded-xl bg-gradient-to-r from-[#fef9c3]/50 to-[#DFC6F6]/50 border border-gray-200 text-gray-800 font-medium text-sm hover:scale-105 transition-transform duration-300 text-center"
+                    className="px-4 py-3 rounded-xl text-sm font-medium text-center transition-transform duration-300 hover:scale-105"
+                    style={{ background: "var(--vb-ivory-2)", border: "1px solid var(--vb-line)", color: "var(--vb-ink)" }}
                   >
                     {product}
                   </div>
@@ -249,48 +168,56 @@ export default function Contact() {
             </div>
 
             {/* Map */}
-            <div className="bg-white/80 backdrop-blur-xl rounded-2xl p-2 shadow-lg border-2 border-white/50 overflow-hidden">
-            
-{/* Google Maps Embed Code for ITHUM TOWER */}
-<iframe 
-  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.43851558299!2d77.370186875334!3d28.626568!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce550adec536d%3A0xfc9a748d99d8bd07!2sITHUM%20TOWER!5e0!3m2!1sen!2sin!4v1704700000000!5m2!1sen!2sin" 
-  width="600" 
-  height="450" 
-  style={{ border: 0 }} 
-  allowFullScreen={true} 
-  loading="lazy" 
-  referrerPolicy="no-referrer-when-downgrade"
-></iframe>
-
-
+            <div className="vb-card p-2 overflow-hidden">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.43851558299!2d77.370186875334!3d28.626568!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce550adec536d%3A0xfc9a748d99d8bd07!2sITHUM%20TOWER!5e0!3m2!1sen!2sin!4v1704700000000!5m2!1sen!2sin"
+                width="600"
+                height="380"
+                style={{ border: 0, width: "100%", borderRadius: 12 }}
+                allowFullScreen={true}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Veer Bharat location"
+              />
             </div>
           </div>
         </div>
 
-        {/* Bottom CTA Section */}
-        <div className="bg-gradient-to-r from-red-600 to-orange-600 rounded-3xl p-8 md:p-10 shadow-2xl text-center text-white">
-          <h3 className="text-2xl md:text-3xl font-black mb-3">Ready to Partner with Us?</h3>
-          <p className="text-white/90 text-lg mb-6 max-w-2xl mx-auto">
-            Join hands with Veer Bharat for quality edible oils. Perfect for retailers, distributors, and bulk buyers!
+        {/* Bottom CTA */}
+        <div className="rounded-3xl p-8 md:p-12 text-center" style={{ background: "var(--vb-ink)" }}>
+          <h3 className="text-2xl md:text-3xl font-bold mb-3" style={{ fontFamily: "var(--vb-font-head)", color: "var(--vb-ivory)" }}>
+            Ready to Partner with Us?
+          </h3>
+          <p className="text-lg mb-7 max-w-2xl mx-auto" style={{ color: "#9FB0C6" }}>
+            Join hands with Veer Bharat for quality edible oils. Perfect for retailers, distributors and bulk buyers.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <a
-              href="+91 9266328444"
-              className="px-8 py-4 rounded-xl bg-white text-red-600 font-bold hover:bg-gray-100 transition-all duration-300 hover:scale-105 shadow-lg"
-            >
-              Call Us Now
-            </a>
-            <a
-              href="mailto:info@veerbharat.com"
-              className="px-8 py-4 rounded-xl border-2 border-white text-white font-bold hover:bg-white hover:text-red-600 transition-all duration-300 hover:scale-105"
-            >
+            <a href="tel:+919266328444" className="vb-btn-gold">Call Us Now</a>
+            <a href="mailto:info@veerbharat.com" className="vb-btn-ghost" style={{ color: "#fff", borderColor: "rgba(251,247,239,0.35)" }}>
               Email Us
             </a>
           </div>
         </div>
       </div>
 
-
+      <style>{`
+        .vb-input {
+          width: 100%;
+          padding: 12px 16px;
+          border-radius: 12px;
+          background: var(--vb-cream);
+          border: 1px solid var(--vb-line);
+          color: var(--vb-ink);
+          transition: border-color .2s ease, box-shadow .2s ease;
+          font-size: 0.95rem;
+        }
+        .vb-input::placeholder { color: #9aa7ba; }
+        .vb-input:focus {
+          outline: none;
+          border-color: var(--vb-gold);
+          box-shadow: 0 0 0 3px rgba(183,137,45,0.12);
+        }
+      `}</style>
     </section>
-  )
+  );
 }

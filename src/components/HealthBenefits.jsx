@@ -236,17 +236,15 @@ export default function HealthBenefits() {
 
   // RENDER
   return (
-    <section
-      className="py-20"
-      style={{
-        background: "linear-gradient(135deg, #eaf6ef 0%, #f0f9f4 100%)",
-      }}
-    >
+    <section className="py-20 md:py-28" style={{ background: "var(--vb-ivory-2)" }}>
       <div className="mx-auto px-6" style={{ maxWidth: "1240px" }}>
-        <h2 className="text-center text-4xl md:text-5xl font-bold text-[#0b2b52] mb-12 relative">
-          HEALTH BENEFITS
-          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-[#0b2b52] to-[#1e6b52] rounded-full mt-4"></div>
-        </h2>
+        <div className="text-center mb-14">
+          <span className="vb-eyebrow">Goodness Inside</span>
+          <h2 className="vb-heading mt-5 text-4xl md:text-5xl" style={{ fontFamily: "var(--vb-font-head)" }}>
+            Health <span className="vb-heading-accent">Benefits</span>
+          </h2>
+          <div className="vb-divider vb-divider--center mt-6" />
+        </div>
 
         <div className="relative">
           {/* Navigation Buttons */}
@@ -259,7 +257,7 @@ export default function HealthBenefits() {
               boxShadow: "0 8px 25px rgba(11, 43, 82, 0.15)",
             }}
           >
-            <span className="text-2xl text-[#0b2b52] group-hover:text-[#1e6b52] transition-colors">
+            <span className="text-2xl text-[#0E2240] group-hover:text-[#B7892D] transition-colors">
               ‹
             </span>
           </button>
@@ -273,7 +271,7 @@ export default function HealthBenefits() {
               boxShadow: "0 8px 25px rgba(11, 43, 82, 0.15)",
             }}
           >
-            <span className="text-2xl text-[#0b2b52] group-hover:text-[#1e6b52] transition-colors">
+            <span className="text-2xl text-[#0E2240] group-hover:text-[#B7892D] transition-colors">
               ›
             </span>
           </button>
@@ -327,7 +325,7 @@ export default function HealthBenefits() {
                         overflow: "hidden",
                         transition: "all 0.3s ease",
                       }}
-                      className="group-hover:shadow-2xl group-hover:border-[#1e6b52]"
+                      className="group-hover:shadow-2xl group-hover:border-[#B7892D]"
                     >
                       {/* Subtle background pattern */}
                       <div
@@ -338,7 +336,7 @@ export default function HealthBenefits() {
                           right: 0,
                           bottom: 0,
                           background:
-                            "radial-gradient(circle at 30% 30%, rgba(30, 107, 82, 0.03) 0%, transparent 50%)",
+                            "radial-gradient(circle at 30% 30%, rgba(183, 137, 45, 0.05) 0%, transparent 50%)",
                           borderRadius: "50%",
                         }}
                       />
@@ -375,14 +373,10 @@ export default function HealthBenefits() {
                       <p
                         style={{
                           fontWeight: 700,
-                          color: "#0b2b52",
+                          color: "#0E2240",
                           margin: 0,
                           fontSize: "18px",
                           lineHeight: "1.4",
-                          background:
-                            "linear-gradient(135deg, #0b2b52 0%, #1e6b52 100%)",
-                          WebkitBackgroundClip: "text",
-                          WebkitTextFillColor: "transparent",
                         }}
                         className="group-hover:scale-105 transition-transform duration-300"
                       >
@@ -407,7 +401,7 @@ export default function HealthBenefits() {
               }}
               className={`w-3 h-3 rounded-full transition-all duration-300 ${
                 (index - Math.max(visible, MIN_CLONES)) % baseItems.length === i
-                  ? "bg-[#1e6b52] w-8"
+                  ? "bg-[#B7892D] w-8"
                   : "bg-gray-300 hover:bg-gray-400"
               }`}
               aria-label={`Go to slide ${i + 1}`}

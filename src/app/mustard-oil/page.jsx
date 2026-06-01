@@ -661,7 +661,7 @@ function VariantSection({ product, index }) {
             <img src={product.image} alt={product.name} className="w-full h-full object-cover group-hover:scale-110 transition duration-700" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition" />
             {product.popular && (
-              <div className="absolute top-6 left-6 px-4 py-2 rounded-full bg-gradient-to-r from-red-500 to-pink-500 text-white text-sm font-bold shadow-lg">🔥 Best Seller</div>
+              <div className="absolute top-6 left-6 px-4 py-2 rounded-full bg-gradient-to-r from-[#8B2A3F] to-[#6E1F31] text-white text-sm font-bold shadow-lg">★ Best Seller</div>
             )}
           </div>
           {/* floating card */}

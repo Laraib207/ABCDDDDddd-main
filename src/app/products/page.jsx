@@ -1242,9 +1242,10 @@ import { ShoppingCart, Info, ChevronLeft, ChevronRight, Package, Droplet } from 
 /* 1. Configuration: Colors and Filtered Data                          */
 /* ------------------------------------------------------------------ */
 
-// --- MIXED COLOR PALETTE: #7E30E1 (Purple) & #FFF8E7 (Creamy Yellow) ---
-const COLOR_PRIMARY = "#7E30E1"; // Vibrant Deep Purple (Accent)
-const COLOR_SECONDARY = "#FFF8E7"; // Pale Creamy Yellow (Main Background)
+// --- PREMIUM PALETTE: ink-navy accent on ivory ---
+const COLOR_PRIMARY = "#0E2240"; // Ink navy (accent / buttons)
+const COLOR_GOLD = "#B7892D";    // Mustard gold
+const COLOR_SECONDARY = "#FBF7EF"; // Ivory (main background)
 
 // Filtered Product Data (Only products with dedicated pages in the project root)
 const products = [
@@ -1358,7 +1359,8 @@ function ElegantCard({ product }) {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true, amount: 0.2 }}
-            className="bg-white dark:bg-gray-800 rounded-lg shadow-xl overflow-hidden group hover:shadow-2xl transition-all duration-500 ease-in-out border border-gray-100 dark:border-gray-700"
+            className="bg-white rounded-2xl shadow-xl overflow-hidden group hover:shadow-2xl transition-all duration-500 ease-in-out border"
+            style={{ borderColor: "#E6DDC8" }}
         >
             <div className="relative overflow-hidden">
                 <img
@@ -1367,25 +1369,25 @@ function ElegantCard({ product }) {
                     className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110 group-hover:opacity-90"
                     loading="lazy"
                 />
-                <div className="absolute top-0 right-0 text-white text-xs font-bold px-3 py-1 rounded-bl-lg shadow-md" style={{ backgroundColor: COLOR_PRIMARY }}>
+                <div className="absolute top-0 right-0 text-white text-xs font-bold px-3 py-1 rounded-bl-lg shadow-md" style={{ backgroundColor: COLOR_GOLD }}>
                     {product.badge}
                 </div>
             </div>
             
             <div className="p-6 text-center">
-                <h3 className="text-2xl font-serif font-bold text-gray-900 dark:text-white mb-2">{product.name}</h3>
-                <p className="text-gray-600 dark:text-gray-300 text-sm italic line-clamp-2 min-h-[40px] mb-4">{product.short}</p>
+                <h3 className="text-2xl font-serif font-bold mb-2" style={{ color: COLOR_PRIMARY }}>{product.name}</h3>
+                <p className="text-sm italic line-clamp-2 min-h-[40px] mb-4" style={{ color: "#5C6B82" }}>{product.short}</p>
 
                 <div className="flex items-center justify-center mt-4 mb-4">
-                    <span className="text-4xl font-serif font-extrabold" style={{ color: COLOR_PRIMARY }}>
+                    <span className="text-4xl font-serif font-extrabold" style={{ color: COLOR_GOLD }}>
                         ₹{product.price}
                     </span>
                 </div>
 
-                {/* --- NEW VARIANT/CATEGORY SECTION --- */}
-                <div className="mt-4 mb-4 border-t border-b border-gray-100 dark:border-gray-700 py-3">
-                    <p className="text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2 flex items-center justify-center">
-                        <Package size={16} className="mr-1 text-yellow-600" /> Available Packs
+                {/* --- VARIANT/CATEGORY SECTION --- */}
+                <div className="mt-4 mb-4 py-3" style={{ borderTop: "1px solid #EFE7D5", borderBottom: "1px solid #EFE7D5" }}>
+                    <p className="text-sm font-semibold mb-2 flex items-center justify-center" style={{ color: COLOR_PRIMARY }}>
+                        <Package size={16} className="mr-1" style={{ color: COLOR_GOLD }} /> Available Packs
                     </p>
                     <div className="flex flex-wrap justify-center gap-2">
                         {product.variants.map((variant, index) => (
@@ -1394,7 +1396,7 @@ function ElegantCard({ product }) {
                                 href={variant.slug}
                                 className="text-xs font-medium px-3 py-1 rounded-full border transition-colors duration-200"
                                 style={{ 
-                                    borderColor: COLOR_PRIMARY, 
+                                    borderColor: "#E6DDC8", 
                                     color: COLOR_PRIMARY,
                                     backgroundColor: COLOR_SECONDARY,
                                 }}
@@ -1410,17 +1412,17 @@ function ElegantCard({ product }) {
                     {/* Primary action (Purchase) */}
                     <button
                         onClick={() => addToCart(product)}
-                        className="flex-1 flex items-center justify-center gap-2 rounded-full px-4 py-2 text-white font-bold shadow-md transition-all duration-300 text-sm"
+                        className="flex-1 flex items-center justify-center gap-2 rounded-full px-4 py-2.5 text-white font-bold shadow-md transition-all duration-300 text-sm hover:opacity-90"
                         style={{ backgroundColor: COLOR_PRIMARY }}
                     >
                         <ShoppingCart size={18} /> Quick Add
                     </button>
                     
-                    {/* Secondary action (View Details) - Links to the general product page */}
+                    {/* Secondary action (View Details) */}
                     <Link
                         href={`/${product.slug}`}
-                        className="flex items-center justify-center gap-2 rounded-full px-4 py-2 border font-semibold text-sm transition-all duration-300 hover:opacity-80"
-                        style={{ borderColor: COLOR_PRIMARY, color: COLOR_PRIMARY }}
+                        className="flex items-center justify-center gap-2 rounded-full px-4 py-2.5 border font-semibold text-sm transition-all duration-300 hover:opacity-80"
+                        style={{ borderColor: COLOR_GOLD, color: COLOR_GOLD }}
                         aria-label={`View details for ${product.name}`}
                     >
                         <Info size={18} /> View Details
@@ -1453,7 +1455,7 @@ function ElegantSlider() {
     if (!product) return null;
 
     return (
-        <section className={`py-20 md:py-32 border-b border-gray-200`} style={{ backgroundColor: COLOR_SECONDARY }}>
+        <section className="py-20 md:py-28" style={{ backgroundColor: COLOR_SECONDARY, borderBottom: "1px solid #E6DDC8" }}>
             <div className="max-w-7xl mx-auto px-4 relative">
                 
                 <AnimatePresence mode="wait">
@@ -1467,24 +1469,24 @@ function ElegantSlider() {
                     >
                         {/* Text Content */}
                         <div className="order-2 md:order-1">
-                            <p className="text-sm font-semibold uppercase text-gray-500 mb-2 tracking-widest">
+                            <p className="text-sm font-semibold uppercase mb-2 tracking-widest" style={{ color: COLOR_GOLD }}>
                                 {product.badge}
                             </p>
-                            <h1 className="text-6xl md:text-8xl font-serif font-extrabold text-gray-900 dark:text-white mb-6 leading-tight" style={{ color: COLOR_PRIMARY }}>
+                            <h1 className="text-5xl md:text-7xl font-serif font-extrabold mb-6 leading-tight" style={{ color: COLOR_PRIMARY }}>
                                 {product.name}
                             </h1>
-                            <p className="text-xl text-gray-700 dark:text-gray-300 mb-8 max-w-md">
+                            <p className="text-xl mb-8 max-w-md" style={{ color: "#5C6B82" }}>
                                 {product.short}
                             </p>
-                            <div className="text-5xl font-serif font-bold mb-8" style={{ color: COLOR_PRIMARY }}>
+                            <div className="text-4xl font-serif font-bold mb-8" style={{ color: COLOR_GOLD }}>
                                 ₹{product.price}
-                                <span className="text-lg font-sans text-gray-500 ml-2">onwards</span>
+                                <span className="text-lg font-sans ml-2" style={{ color: "#5C6B82" }}>onwards</span>
                             </div>
 
                             {/* Variant Links in Slider */}
                             <div className="flex flex-wrap gap-2 mb-8">
-                                <p className="text-base font-semibold text-gray-700 dark:text-gray-200 w-full flex items-center mb-1">
-                                    <Droplet size={18} className="mr-1 text-blue-500" /> Choose Size:
+                                <p className="text-base font-semibold w-full flex items-center mb-1" style={{ color: COLOR_PRIMARY }}>
+                                    <Droplet size={18} className="mr-1" style={{ color: COLOR_GOLD }} /> Choose Size:
                                 </p>
                                 {product.variants.map((variant, index) => (
                                     <Link 
@@ -1492,7 +1494,7 @@ function ElegantSlider() {
                                         href={variant.slug}
                                         className="text-sm font-medium px-4 py-2 rounded-full border-2 transition-colors duration-200 hover:bg-white"
                                         style={{ 
-                                            borderColor: COLOR_PRIMARY, 
+                                            borderColor: "#E6DDC8", 
                                             color: COLOR_PRIMARY
                                         }}
                                     >
@@ -1505,7 +1507,7 @@ function ElegantSlider() {
                             <div className="flex gap-4">
                                 <button
                                     onClick={() => addToCart(product)}
-                                    className="flex items-center gap-2 rounded-full px-8 py-3 text-white font-bold text-lg shadow-xl transition-all duration-300"
+                                    className="flex items-center gap-2 rounded-full px-8 py-3 text-white font-bold text-lg shadow-xl transition-all duration-300 hover:opacity-90"
                                     style={{ backgroundColor: COLOR_PRIMARY }}
                                 >
                                     <ShoppingCart size={20} /> Quick Order
@@ -1515,7 +1517,7 @@ function ElegantSlider() {
                                 <Link
                                     href={`/${product.slug}`}
                                     className="flex items-center gap-2 rounded-full px-6 py-3 border-2 font-semibold transition-all duration-300 hover:bg-white"
-                                    style={{ borderColor: COLOR_PRIMARY, color: COLOR_PRIMARY }}
+                                    style={{ borderColor: COLOR_GOLD, color: COLOR_GOLD }}
                                 >
                                     <Info size={20} /> View All Details
                                 </Link>
@@ -1527,8 +1529,8 @@ function ElegantSlider() {
                             <img
                                 src={product.image}
                                 alt={product.name}
-                                className="w-full max-w-sm h-auto object-contain rounded-xl shadow-2xl ring-4"
-                                style={{ borderColor: COLOR_PRIMARY }}
+                                className="w-full max-w-sm h-auto object-contain rounded-2xl shadow-2xl ring-4"
+                                style={{ borderColor: "#fff" }}
                                 loading="eager"
                             />
                         </div>
@@ -1538,14 +1540,14 @@ function ElegantSlider() {
                 {/* Slider Controls */}
                 <button 
                     onClick={prevProduct} 
-                    className="absolute top-1/2 left-0 md:left-4 -translate-y-1/2 p-3 rounded-full bg-white/70 shadow-lg z-10 hover:bg-white transition"
+                    className="absolute top-1/2 left-0 md:left-4 -translate-y-1/2 p-3 rounded-full bg-white shadow-lg z-10 hover:bg-vb-ivory2 transition"
                     aria-label="Previous Product"
                 >
                     <ChevronLeft size={30} style={{ color: COLOR_PRIMARY }} />
                 </button>
                 <button 
                     onClick={nextProduct} 
-                    className="absolute top-1/2 right-0 md:right-4 -translate-y-1/2 p-3 rounded-full bg-white/70 shadow-lg z-10 hover:bg-white transition"
+                    className="absolute top-1/2 right-0 md:right-4 -translate-y-1/2 p-3 rounded-full bg-white shadow-lg z-10 hover:bg-vb-ivory2 transition"
                     aria-label="Next Product"
                 >
                     <ChevronRight size={30} style={{ color: COLOR_PRIMARY }} />
@@ -1560,23 +1562,25 @@ function ElegantSlider() {
 /* ------------------------------------------------------------------ */
 export default function ProductShowcase() {
     return (
-        <div className={`min-h-screen bg-gray-50 dark:bg-gray-900`}>
+        <div className="min-h-screen" style={{ background: "var(--vb-ivory)" }}>
             
             {/* 1. Slider Section */}
             <ElegantSlider />
             
             {/* 2. Main Grid Title */}
             <section className="max-w-7xl mx-auto px-4 pt-16 pb-10 text-center">
-                <h2 className="text-4xl font-serif font-bold text-gray-900 dark:text-white mb-3" style={{ color: COLOR_PRIMARY }}>
-                    The Full Catalogue
+                <span className="vb-eyebrow">Full Catalogue</span>
+                <h2 className="vb-heading mt-5 text-4xl md:text-5xl" style={{ fontFamily: "var(--vb-font-head)" }}>
+                    Our <span className="vb-heading-accent">Products</span>
                 </h2>
-                <p className="text-lg text-gray-600 dark:text-gray-400">
-                    A curated selection of the finest ingredients for the discerning chef.
+                <div className="vb-divider vb-divider--center mt-6" />
+                <p className="vb-lead mx-auto mt-6 max-w-2xl">
+                    A curated selection of the finest edible oils and culinary essentials.
                 </p>
             </section>
 
             {/* 3. Product Grid */}
-            <section className="max-w-7xl mx-auto px-4 pb-20">
+            <section className="max-w-7xl mx-auto px-4 pb-24">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
                     {products.map((product) => (
                         <ElegantCard 
